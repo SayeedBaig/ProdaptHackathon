@@ -1,0 +1,18 @@
+{
+  "ops": [
+    {
+      "op": "set",
+      "path": "customer.primary_segment",
+      "value": "Hostel-dwelling college students living on campus",
+      "source": "founder",
+      "reason": "Founder clarified primary target customer segment during clarification loop."
+    },
+    {
+      "op": "set",
+      "path": "business_model.revenue_source",
+      "value": "Commission of 12% per meal order plus $15/month student pass",
+      "source": "founder",
+      "reason": "Founder specified monetization strategy."
+    }
+  ]
+}

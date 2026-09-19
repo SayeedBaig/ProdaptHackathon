@@ -1,0 +1,31 @@
+{
+  "headline": "Nutritious Campus Meals at Student-Friendly Prices",
+  "subheadline": "NutriNest connects hostel students with healthy local mess providers, offering flexible meal plans and fast campus delivery.",
+  "geoff_moore_template": {
+    "target_customer": "Hostel-dwelling college students",
+    "statement_of_need": "who struggle to find affordable healthy daily meals",
+    "product_name": "NutriNest",
+    "product_category": "student food discovery & meal subscription platform",
+    "key_benefit": "delivers fresh, home-style healthy meals under $3 per serving",
+    "primary_competitor": "generic food delivery apps like Swiggy and Zomato",
+    "our_differentiation": "focuses exclusively on curated student nutrition, campus mess subscriptions, and group hostel discounts."
+  },
+  "elevator_pitch_30s": "NutriNest is solving the daily food crisis for college students. Over 70% of hostel residents skip healthy meals due to high prices on traditional delivery apps. NutriNest aggregates local healthy mess vendors into a single subscription app, giving students fresh, home-cooked food delivered straight to campus dorms for under $3 a meal.",
+  "unique_selling_points": [
+    "Hyper-local hostel dorm delivery network",
+    "Curated daily nutrition plans designed for student budgets",
+    "Flexible skip-or-swap meal subscriptions during exams"
+  ],
+  "pain_relief_matrix": [
+    {
+      "customer_pain": "Expensive food delivery fees on generic apps",
+      "product_feature": "Hostel Batch Delivery Pass",
+      "relief_value": "Cuts delivery charges to zero by bundling dorm orders together"
+    },
+    {
+      "customer_pain": "Unhealthy junk food options near university areas",
+      "product_feature": "Vetted Home-Style Mess Network",
+      "relief_value": "Ensures clean, balanced meals certified by campus dietitians"
+    }
+  ]
+}

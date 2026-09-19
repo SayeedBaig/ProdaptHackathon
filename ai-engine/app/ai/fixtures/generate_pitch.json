@@ -1,0 +1,71 @@
+{
+  "pitch_id": "pitch_nutrinest_v1",
+  "version": 1,
+  "profile_version": 1,
+  "slides": [
+    {
+      "key": "problem",
+      "title": "Problem: College Food is Expensive & Unhealthy",
+      "bullets": [
+        "Hostel students spend $150+/month on delivery apps with high fees",
+        "Over 70% rely on low-quality fast food due to lack of healthy options near dorms",
+        "Irregular eating habits harm student health and academic focus"
+      ],
+      "visual_concept": "Split screen: Expensive food bill vs Unhealthy fast food box",
+      "speaker_notes": "Every student living in a hostel knows the struggle: food delivery apps are too expensive, and local options are repetitive and oily.",
+      "status": "complete"
+    },
+    {
+      "key": "solution",
+      "title": "Solution: NutriNest Healthy Campus Dining",
+      "bullets": [
+        "Curated marketplace of vetted local healthy mess providers",
+        "Flexible monthly & weekly meal plans starting at $2.50/meal",
+        "Batch dorm delivery cutting delivery fees to zero"
+      ],
+      "visual_concept": "App screenshot showing meal calendar and $2.50 pricing badge",
+      "speaker_notes": "NutriNest makes healthy eating affordable for students by aggregating local meal providers and batch-delivering dorm orders.",
+      "status": "complete"
+    },
+    {
+      "key": "target_market",
+      "title": "Target Market: $4.8B Student Dining Sector",
+      "bullets": [
+        "TAM: $4.8B Indian College Food & Tiffin Market",
+        "SAM: $1.2B University Cities",
+        "SOM: $45M across 50 target university campuses"
+      ],
+      "visual_concept": "Concentric TAM/SAM/SOM market sizing diagram",
+      "speaker_notes": "We are tapping into a multi-billion dollar market, starting with 50 high-density university campuses.",
+      "status": "complete"
+    },
+    {
+      "key": "business_model",
+      "title": "Business Model: High-Margin Monetization",
+      "bullets": [
+        "12% commission per meal transaction",
+        "$15/month Student Pass for unlimited free delivery",
+        "Vendor premium placement fees"
+      ],
+      "visual_concept": "Three-pillar revenue stream breakdown",
+      "speaker_notes": "We monetize both ends: taking a commission from vendors and offering subscription passes to students.",
+      "status": "complete"
+    },
+    {
+      "key": "traction",
+      "title": "Traction & Next Steps",
+      "bullets": [
+        "Requires validation: Founder input needed for initial pilot interview numbers",
+        "Targeting 500 active hostel subscribers in Quarter 1"
+      ],
+      "visual_concept": "Milestone timeline towards 500 subscribers",
+      "speaker_notes": "We are currently preparing our pilot rollout at our first campus location.",
+      "status": "needs_input"
+    }
+  ],
+  "scripts": {
+    "elevator_pitch_30s": "Hi, I'm building NutriNest. Hostel college students spend hundreds of dollars on delivery apps for unhealthy fast food. NutriNest connects students with curated local mess vendors, offering fresh, home-cooked meals for under $3 a day delivered right to their dorms. We're unlocking a $4.8B student food market.",
+    "overview_pitch_2min": "Good day investors. Over 10 million college students live away from home in university hostels. Today, they face a double penalty: campus canteens lack quality and variety, while mainstream apps like Swiggy charge heavy delivery fees. NutriNest solves this with a dedicated student food subscription network. By batching orders at dorm drop-off hubs, we reduce delivery costs by 80% and pass those savings to students. We take a 12% commission from vendors and offer a $15/month delivery pass. We are seeking seed funding to launch our pilot across 5 major university campuses.",
+    "full_pitch_5min": "Welcome investors. Today we present NutriNest—the healthy food app for college students. On Slide 1, you see our core problem: high costs and poor nutrition for hostel residents. Slide 2 outlines our solution: a curated marketplace for affordable meal plans with zero-fee dorm batching. On Slide 3, our market analysis shows a $4.8B TAM. Slide 4 details our dual revenue stream: vendor commissions and student passes. Finally, Slide 5 highlights our rollout strategy. Thank you, and we welcome your questions."
+  }
+}

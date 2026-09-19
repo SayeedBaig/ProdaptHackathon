@@ -1,0 +1,28 @@
+{
+  "problem": "Hostel-dwelling college students struggle to find affordable, healthy food options near campus and rely on expensive, unhealthy fast food delivery apps.",
+  "target_customer": "College students living in university hostels and off-campus housing",
+  "solution": "NutriNest: A hyper-local food discovery and subscription platform connecting students with vetted healthy meal vendors and mess plans.",
+  "pain_points": [
+    "High cost of daily meals on generic food delivery apps",
+    "Lack of dietary filters for healthy/home-cooked student meals",
+    "Irregular eating habits leading to health issues during exams"
+  ],
+  "assumptions": [
+    "Students are willing to switch from Swiggy/Zomato for healthy meal subscriptions",
+    "Local tiffin/mess providers are eager to list on a student-focused platform"
+  ],
+  "risks": [
+    "Incumbents (Swiggy/Zomato) can easily introduce student/healthy meal filters",
+    "Price sensitivity among college students limiting profit margins"
+  ],
+  "missing_information": [
+    "Exact pricing tier acceptance among hostel students",
+    "Vendor onboarding capacity in pilot university zones",
+    "Customer acquisition cost (CAC) for student campus ambassadors"
+  ],
+  "first_question": {
+    "id": "q1",
+    "text": "Which specific student sub-segment are you targeting first, and what is their monthly meal budget?",
+    "target_field": "customer.primary_segment"
+  }
+}

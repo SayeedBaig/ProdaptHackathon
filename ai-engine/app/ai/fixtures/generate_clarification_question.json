@@ -1,0 +1,8 @@
+{
+  "id": "cq1",
+  "text": "What is your proposed revenue model (e.g. commission per meal order, monthly subscription fee from students, or vendor listing fees)?",
+  "target_field": "business_model.revenue_source",
+  "category": "Monetization",
+  "rationale": "Investors need to verify customer lifetime value (LTV) and unit economics before assessing scalability.",
+  "sample_answer_hint": "12% commission per meal order + $15/mo student subscription for free delivery."
+}

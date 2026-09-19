@@ -1,0 +1,37 @@
+{
+  "competitors": [
+    {
+      "id": "c1",
+      "name": "Swiggy / Zomato",
+      "description": "Massive food aggregator platforms with broad restaurant selection.",
+      "differentiation": "Generic delivery apps lack hostel batching, specialized student meal subscriptions, and low-cost pricing.",
+      "strengths": [
+        "Huge restaurant supply network",
+        "Deep financial capital and logistics scale"
+      ],
+      "weaknesses": [
+        "High delivery fees ($1.50+ per order)",
+        "No focus on healthy daily student mess plans"
+      ],
+      "evidence_ids": ["e1"],
+      "provenance": "source_backed"
+    },
+    {
+      "id": "c2",
+      "name": "Local Campus Canteens",
+      "description": "In-house university hostel dining halls.",
+      "differentiation": "NutriNest provides variety across multiple local vendors with digital ordering and hygiene ratings.",
+      "strengths": [
+        "On-campus location",
+        "Low base price"
+      ],
+      "weaknesses": [
+        "Repetitive weekly menu",
+        "Poor hygiene oversight and limited operating hours"
+      ],
+      "evidence_ids": ["e2"],
+      "provenance": "founder_assumption"
+    }
+  ],
+  "analysis_summary": "NutriNest's primary moat lies in hostel-level batch delivery economics and curated student mess subscriptions that incumbent food apps cannot easily copy without diluting their core model."
+}

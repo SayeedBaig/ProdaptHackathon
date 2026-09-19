@@ -1,0 +1,37 @@
+{
+  "overall_score": 84.5,
+  "clarity_score": 88.0,
+  "persuasion_score": 81.0,
+  "slide_critiques": [
+    {
+      "slide_number": 1,
+      "title": "Title & Intro",
+      "clarity_score": 92.0,
+      "persuasion_score": 85.0,
+      "feedback": "Clear value statement and professional title framing.",
+      "suggested_fix": "Add a 1-sentence traction teaser right on the title slide (e.g. '150+ Beta Signups')."
+    },
+    {
+      "slide_number": 2,
+      "title": "Problem Statement",
+      "clarity_score": 86.0,
+      "persuasion_score": 80.0,
+      "feedback": "Problem is relatable, but lacks quantitative dollar metrics on how much time/money is lost.",
+      "suggested_fix": "Quantify the cost: 'Founders waste 40+ hours and $3,000 per pitch deck prep.'"
+    }
+  ],
+  "top_strengths": [
+    "Strong problem-solution alignment tailored to early-stage founders",
+    "Clear slide-by-slide structure following standard VC deck order",
+    "Compelling 30s elevator pitch script"
+  ],
+  "critical_gaps": [
+    "Needs explicit unit economics details in the Business Model slide",
+    "Requires concrete competitive moat statement against generic AI platforms"
+  ],
+  "actionable_recommendations": [
+    "Include 2 customer testimonials or pilot metrics on the solution slide",
+    "Add explicit CAC/LTV projection targets on the business model slide",
+    "Practice the 2-minute overview script to keep presentation time under strict limits"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "scores": {
+    "clarity": 8,
+    "specificity": 5,
+    "evidence": 3,
+    "business_reasoning": 6,
+    "differentiation": 4,
+    "scalability": 5
+  },
+  "explanation": "The answer identifies price as a factor but lacks concrete evidence that students will switch away from established delivery platforms.",
+  "strengths": [
+    "Directly addresses the price point gap"
+  ],
+  "weaknesses": [
+    "No survey data or pilot metrics proving student willingness to switch",
+    "Fails to explain hostel batch delivery mechanics"
+  ],
+  "recommended_improvement": "Swiggy and Zomato are built for on-demand single orders, which results in delivery fees exceeding $1.50 per meal. NutriNest operates a hostel dorm batching model: we combine 20+ dorm orders into single scheduled delivery runs. This lowers delivery cost to $0.20 per meal, allowing us to offer fresh home-style meals at $2.50—a price point high-overhead food apps cannot match.",
+  "weakest_criterion": "evidence",
+  "claims_made": [
+    "Swiggy delivery fees exceed $1.50",
+    "Dorm batching drops delivery cost to $0.20 per meal"
+  ],
+  "follow_up_question": "Do you have any pilot survey data or interview results confirming students will accept scheduled batch delivery times?"
+}

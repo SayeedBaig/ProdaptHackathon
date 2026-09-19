@@ -2,8 +2,12 @@
 M1_Presentation_Notes.md
 PitchPilot_Architecture_and_Team_Guide.md
 
+# Environment files (never commit secrets!)
+.env
+
 # Virtual Environment and Python Caches
 venv/
+.venv/
 __pycache__/
 *.pyc
 *.pyo

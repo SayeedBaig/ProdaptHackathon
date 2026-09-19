@@ -1,0 +1,8 @@
+{
+  "seq": 1,
+  "topic": "differentiation",
+  "intent": "opening",
+  "question": "Why would hostel students use NutriNest instead of ordering on Swiggy or Zomato with existing coupon codes?",
+  "difficulty": "Hard",
+  "investor_intent": "Testing market defensibility, customer acquisition moat, and pricing power."
+}

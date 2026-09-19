@@ -1,0 +1,21 @@
+{
+  "revenue_type": "Freemium SaaS + Transaction Commission",
+  "customer_segment": "Hostel college students",
+  "payer_segment": "Students & Parents funding monthly meal allowances",
+  "revenue_streams": [
+    "12% commission on vendor meal orders",
+    "$15/mo Student Delivery Pass",
+    "Featured vendor listing promotion fees"
+  ],
+  "pricing_structure": "$2.50 - $3.50 per healthy meal plan",
+  "cost_drivers": [
+    "Campus ambassador commissions",
+    "Hostel batch delivery partner payouts",
+    "App maintenance & vendor onboarding"
+  ],
+  "go_to_market_strategy": "Student campus ambassador network, hostel WhatsApp group viral loops, and university canteen partnerships.",
+  "missing_assumptions": [
+    "Exact CAC per student acquired via campus ambassadors",
+    "Repeat subscription retention rate past month 2"
+  ]
+}

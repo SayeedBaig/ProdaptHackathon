@@ -1,0 +1,26 @@
+{
+  "questions": [
+    {
+      "id": "CQ1",
+      "category": "Monetization",
+      "question": "What is your primary revenue model (e.g., monthly subscription per founder, pay-per-pitch deck, or accelerator licensing)?",
+      "rationale": "Investors need to verify customer lifetime value (LTV) and recurring revenue scalability.",
+      "sample_answer_hint": "Freemium model with $29/mo Founder Plan and $499/yr Enterprise License for accelerators."
+    },
+    {
+      "id": "CQ2",
+      "category": "Traction",
+      "question": "Do you have any pilot users, beta signups, or letter of intent (LOI) from incubator programs?",
+      "rationale": "Early validation metrics reduce execution risk for pre-seed investors.",
+      "sample_answer_hint": "We have 150 waitlist signups and a pilot agreement with 2 local startup incubators."
+    },
+    {
+      "id": "CQ3",
+      "category": "Defensibility",
+      "question": "What is your unfair advantage or proprietary moat against generic LLMs (e.g. ChatGPT / Claude)?",
+      "rationale": "VCs reject generic AI wrappers; they look for proprietary data loops or domain workflows.",
+      "sample_answer_hint": "Fine-tuned pitch evaluation model trained on 10,000+ successful YC/Techstars pitch decks and VC feedback."
+    }
+  ],
+  "guidance_notes": "Answering these clarification questions will convert your initial pitch draft into an investor-ready business case."
+}

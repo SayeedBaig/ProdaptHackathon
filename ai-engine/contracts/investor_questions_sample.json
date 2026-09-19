@@ -1,0 +1,40 @@
+{
+  "questions": [
+    {
+      "id": "IQ1",
+      "category": "Financial",
+      "question": "What is your projected Customer Acquisition Cost (CAC) and how do you plan to achieve paybacks under 6 months?",
+      "difficulty": "Hard",
+      "investor_intent": "Testing financial literacy, go-to-market efficiency, and unit economics realism.",
+      "key_points_to_include": [
+        "Target acquisition channels (organic founder communities, incubator partnerships)",
+        "Estimated CAC range ($40 - $70)",
+        "Expected payback window (3-5 months on monthly SaaS subscriptions)"
+      ]
+    },
+    {
+      "id": "IQ2",
+      "category": "Technical",
+      "question": "How do you prevent users from bypassing your app and replicating your prompts directly in ChatGPT?",
+      "difficulty": "Brutal",
+      "investor_intent": "Probing for proprietary technology, data moats, and product defensibility.",
+      "key_points_to_include": [
+        "Multi-agent evaluation pipeline with proprietary scoring rubrics",
+        "Fine-tuned investor feedback datasets",
+        "Integrated UI/UX for visual slide export and live voice Q&A practice"
+      ]
+    },
+    {
+      "id": "IQ3",
+      "category": "Market",
+      "question": "Why hasn't pitch.com or slidebean already dominated this exact AI pitch coaching space?",
+      "difficulty": "Medium",
+      "investor_intent": "Evaluating market dynamics and competitive awareness.",
+      "key_points_to_include": [
+        "Competitors focus on visual slide layout rather than business logic and pitch defense",
+        "Our focus is structured investor readiness scoring and active Q&A coaching"
+      ]
+    }
+  ],
+  "preparation_advice": "Always answer with numbers first, keep responses under 45 seconds, and avoid defensive language when challenged by VCs."
+}

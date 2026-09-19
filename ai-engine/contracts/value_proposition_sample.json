@@ -1,0 +1,31 @@
+{
+  "headline": "Transform Raw Startup Ideas into Investor-Ready Pitches with PitchCoach AI",
+  "subheadline": "The AI pitch coach that structures your deck, benchmarks your market, and trains you to pass VC grillings with confidence.",
+  "geoff_moore_template": {
+    "target_customer": "Early-stage entrepreneurs and startup founders in AI & Enterprise SaaS",
+    "statement_of_need": "who struggle to structure compelling pitch decks and prepare for tough investor Q&A",
+    "product_name": "PitchCoach AI",
+    "product_category": "AI-powered pitch coach and readiness service",
+    "key_benefit": "transforms rough concepts into structured VC decks, market analyses, and interactive pitch defense practice",
+    "primary_competitor": "static presentation templates or expensive pitch consultants",
+    "our_differentiation": "provides instant structured AI scoring, automated market benchmarking, and interactive VC question evaluation."
+  },
+  "elevator_pitch_30s": "For early-stage founders, PitchCoach AI is an AI startup pitch coach that converts unrefined ideas into winning business decks in minutes. Unlike generic slide templates, PitchCoach AI evaluates your value proposition, analyzes market opportunities, and coaches you through tough investor Q&A before you step into the boardroom.",
+  "unique_selling_points": [
+    "End-to-end pitch deck & script generation in under 2 minutes",
+    "Interactive AI investor grill simulator with instant answer scoring",
+    "Automated TAM/SAM/SOM and competitive positioning benchmarking"
+  ],
+  "pain_relief_matrix": [
+    {
+      "customer_pain": "Uncertainty about what hard questions VCs will ask during pitch meetings",
+      "product_feature": "AI Investor Q&A Simulator",
+      "relief_value": "Identifies critical weak spots and trains founders with benchmark answers before actual pitch calls"
+    },
+    {
+      "customer_pain": "Hours wasted formatting slides and writing pitch script drafts",
+      "product_feature": "Instant Slide Deck Generator",
+      "relief_value": "Saves 20+ hours of prep time with structured, slide-by-slide speaker notes and visual layouts"
+    }
+  ]
+}
