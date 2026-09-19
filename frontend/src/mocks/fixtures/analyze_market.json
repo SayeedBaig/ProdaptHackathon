@@ -1,0 +1,57 @@
+{
+  "tam": {
+    "value": 28500000000,
+    "formatted": "$28.5B",
+    "description": "Global Cloud Cost Management & FinOps Software Market by 2028",
+    "calculation_steps": [
+      "50,000 global enterprise accounts with >$500K cloud annual infrastructure budget",
+      "Average annual FinOps software contract spend of $57,000"
+    ],
+    "provenance": "source_backed",
+    "sources": [
+      "Gartner FinOps Market Guide 2024",
+      "IDC Worldwide Cloud Infrastructure Report"
+    ]
+  },
+  "sam": {
+    "value": 6200000000,
+    "formatted": "$6.2B",
+    "description": "Kubernetes containerized infrastructure optimization spend in North America and Western Europe",
+    "calculation_steps": [
+      "120,000 enterprise Kubernetes clusters in production",
+      "Average specialized container optimization budget $51,600/year"
+    ],
+    "provenance": "source_backed",
+    "sources": [
+      "CNCF Annual Survey 2024",
+      "FinOps Foundation State of FinOps 2024"
+    ]
+  },
+  "som": {
+    "value": 450000000,
+    "formatted": "$450M",
+    "description": "Mid-market tech companies running multi-cloud EKS/GKE reachable via bottoms-up developer GTM",
+    "calculation_steps": [
+      "15,000 target accounts identifiable via GitHub and cloud job postings",
+      "Target Average Contract Value (ACV) of $30,000"
+    ],
+    "provenance": "calculated",
+    "sources": [
+      "Founder GTM bottoms-up pipeline analysis"
+    ]
+  },
+  "cagr": 24.8,
+  "growth_drivers": [
+    "Accelerated migration from monolithic VMs to containerized microservices",
+    "C-suite mandate on unbudgeted cloud infrastructure overrun during macro tightening",
+    "Critical shortage and extreme salary costs of senior Site Reliability Engineers"
+  ],
+  "market_risks": [
+    "Hyperscalers bundling basic native autoscaling features",
+    "Extended enterprise security reviews for cluster-level write permissions"
+  ],
+  "assumptions": [
+    "Kubernetes remains dominant container orchestration standard for 5+ years",
+    "Enterprise cloud data and model workloads expand at 20%+ annually"
+  ]
+}

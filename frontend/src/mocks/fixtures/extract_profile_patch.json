@@ -1,0 +1,16 @@
+{
+  "ops": [
+    {
+      "op": "set",
+      "path": "/business_model/pricing",
+      "value": "Tiered SaaS starting at $18/node/month + 12% share of verified cloud cost reduction beyond baseline",
+      "reason": "Founder clarified pricing strategy in clarification answer"
+    },
+    {
+      "op": "set",
+      "path": "/business_model/revenue_source",
+      "value": "Recurring monthly platform subscriptions and annual enterprise gain-share contracts",
+      "reason": "Clarified hybrid pricing model structure"
+    }
+  ]
+}

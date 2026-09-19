@@ -1,0 +1,21 @@
+{
+  "ops": [
+    {
+      "op": "set",
+      "path": "/traction/notes",
+      "value": "8 active production pilots managing 320 nodes across AWS/GCP, representing $240K in qualified pipeline ARR with 3 signed enterprise LOIs.",
+      "reason": "Incorporated quantified traction metrics requested in feedback review"
+    },
+    {
+      "op": "set",
+      "path": "/solution/key_features",
+      "value": [
+        "Real-time autonomous pod right-sizing with zero downtime",
+        "Closed-loop reinforcement learning telemetry optimization agent",
+        "Instant 1-click rollback and dry-run safety sandbox",
+        "SOC2 Type II compliant cluster sidecar architecture"
+      ],
+      "reason": "Clarified safety isolation and enterprise rollback capabilities"
+    }
+  ]
+}

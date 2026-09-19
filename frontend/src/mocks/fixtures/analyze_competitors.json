@@ -1,0 +1,102 @@
+{
+  "direct_competitors": [
+    {
+      "name": "Kubecost",
+      "description": "Popular open-source Kubernetes cost monitoring and multi-tenant allocation dashboard",
+      "strengths": [
+        "Strong open-source brand recognition and community adoption",
+        "Deep granular namespace and pod cost allocation"
+      ],
+      "weaknesses": [
+        "Passive reporting only; requires manual human engineering to enact changes",
+        "Generates ticket fatigue without closing the loop"
+      ],
+      "pricing": "Free OSS tier to $25k+/yr enterprise license",
+      "market_share": "32% in container FinOps monitoring",
+      "differentiator": "Kubecost shows you where money is spent; HyperScale AI automatically reduces it.",
+      "provenance": "source_backed",
+      "source_urls": [
+        "https://kubecost.com",
+        "https://cncf.io/reports"
+      ]
+    },
+    {
+      "name": "Cast AI",
+      "description": "Automated cloud cost optimization and spot instance manager for Kubernetes",
+      "strengths": [
+        "Automated node provisioning and cluster bin-packing",
+        "Dynamic spot instance failover engine"
+      ],
+      "weaknesses": [
+        "Aggressive node bin-packing can cause pod latency spikes",
+        "High barrier to entry with proprietary daemonset requirement"
+      ],
+      "pricing": "Free basic analyzer + 20-25% share of cloud savings",
+      "market_share": "18% in automated FinOps",
+      "differentiator": "HyperScale works safely at the granular pod and micro-workload level, guaranteeing zero application latency spikes.",
+      "provenance": "source_backed",
+      "source_urls": [
+        "https://cast.ai"
+      ]
+    },
+    {
+      "name": "Datadog Cloud Cost",
+      "description": "Integrated observability and cost metrics module within Datadog APM ecosystem",
+      "strengths": [
+        "Ubiquitous existing enterprise agent footprint",
+        "Correlates APM execution traces directly with infrastructure cost"
+      ],
+      "weaknesses": [
+        "High cost of ingestion and licensing",
+        "Strictly observational with no autonomous remediation capabilities"
+      ],
+      "pricing": "$7.50/host/mo + custom retention tiers",
+      "market_share": "25% in enterprise cloud observability",
+      "differentiator": "Active closed-loop agent vs passive telemetry graphing.",
+      "provenance": "source_backed",
+      "source_urls": [
+        "https://datadoghq.com"
+      ]
+    }
+  ],
+  "indirect_competitors": [
+    {
+      "name": "Internal Platform Scripts",
+      "description": "Custom Bash/Python cron jobs and Helm charts written by in-house DevOps teams"
+    },
+    {
+      "name": "Cloud Native Tools (AWS Compute Optimizer / GCP Recommender)",
+      "description": "Hyperscaler built-in recommendation panels that lack cross-cloud insight and automated application safety"
+    }
+  ],
+  "matrix_axes": {
+    "x_axis": "Degree of Automation (Passive Dashboard → Closed-Loop Autonomous Action)",
+    "y_axis": "Granularity of Optimization (Node & VM Level → Pod & Micro-Workload Level)"
+  },
+  "competitor_positions": [
+    {
+      "name": "Datadog",
+      "x": -6,
+      "y": 2,
+      "is_self": false
+    },
+    {
+      "name": "Kubecost",
+      "x": -4,
+      "y": 7,
+      "is_self": false
+    },
+    {
+      "name": "Cast AI",
+      "x": 5,
+      "y": -4,
+      "is_self": false
+    },
+    {
+      "name": "HyperScale AI",
+      "x": 8,
+      "y": 8,
+      "is_self": true
+    }
+  ]
+}

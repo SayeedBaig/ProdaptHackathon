@@ -1,0 +1,27 @@
+{
+  "problem": "High cloud infrastructure costs on Kubernetes clusters due to overprovisioned CPU/RAM buffers and complex manual autoscaling configurations.",
+  "target_customer": "DevOps engineers and Engineering Leaders managing AWS/GCP Kubernetes workloads with over $20k/mo cloud spend.",
+  "solution": "Autonomous AI agent that dynamically analyzes real-time workload telemetry and automatically right-sizes pod allocations and node groups without downtime.",
+  "pain_points": [
+    "Engineers spend 10+ hours per week manually tuning HPA and resource requests",
+    "Cloud bills regularly exceed forecasts by 30-40%",
+    "Over-provisioning is the default fear response to avoid SLA outages"
+  ],
+  "assumptions": [
+    "DevOps teams will grant autonomous write permissions to an AI agent for cluster pod spec edits",
+    "Cloud providers will not release a native zero-touch cost optimizer that makes third parties obsolete"
+  ],
+  "risks": [
+    "Misconfiguration could trigger cascading pod evictions causing downtime",
+    "Enterprise infosec friction regarding read/write cluster access"
+  ],
+  "missing_information": [
+    "Current pilot traction and customer interview counts",
+    "Exact pricing unit metric (per node vs % of savings)"
+  ],
+  "first_question": {
+    "text": "What level of access or proof of safety do your enterprise pilot prospects require before letting an agent mutate cluster state?",
+    "target_field": "solution.key_features",
+    "topic": "validation"
+  }
+}

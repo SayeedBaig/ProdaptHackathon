@@ -1,0 +1,15 @@
+{
+  "one_line": "Autonomous Kubernetes optimization that slashes cloud bills by 35% with zero human tuning.",
+  "elevator": "For DevOps teams struggling with ballooning AWS and GCP infrastructure bills, HyperScale AI is an autonomous agent that continuously right-sizes pod resource allocations in real time. Unlike static cost dashboards like Datadog or CloudHealth that only generate alert fatigue, HyperScale AI takes safe, automated actions with instant rollback guarantees.",
+  "differentiation": "Closed-loop reinforcement learning agent that acts directly on telemetry rather than generating manual ticket backlogs.",
+  "advantage": "Proprietary predictive workload model trained on 50M+ container telemetry hours, achieving sub-minute right-sizing without restart evictions.",
+  "target_segment": "Mid-market and Enterprise B2B SaaS engineering teams running Kubernetes with $250K+ annual cloud spend.",
+  "customer_problem_alignment": "Directly solves engineer burnout from manual pod tuning while delivering guaranteed 3-5x ROI on cost reduction.",
+  "provenance": {
+    "one_line": "ai_analysis",
+    "elevator": "ai_analysis",
+    "differentiation": "ai_analysis",
+    "advantage": "founder_assumption",
+    "target_segment": "source_backed"
+  }
+}

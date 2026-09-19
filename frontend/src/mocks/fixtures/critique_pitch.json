@@ -1,0 +1,36 @@
+{
+  "overall_score": 7.8,
+  "issues": [
+    {
+      "slide_key": "advantage",
+      "severity": "high",
+      "title": "Defensibility needs empirical validation",
+      "explanation": "Investors will push hard on how long your ML model advantage lasts before competitors replicate telemetry tuning.",
+      "suggestion": "Highlight proprietary synthetic stress-test data and telemetry network effects across customer clusters."
+    },
+    {
+      "slide_key": "traction",
+      "severity": "med",
+      "title": "Pilot conversion timeline is vague",
+      "explanation": "You cite 8 active pilots but don't specify the contractual terms or letters of intent (LOI).",
+      "suggestion": "Add dollar-weighted pipeline: '8 pilots representing $240K qualified ARR with 3 signed LOIs'."
+    },
+    {
+      "slide_key": "ask",
+      "severity": "low",
+      "title": "Milestones for seed round should be explicit",
+      "explanation": "Seed investors want to see what exact metrics and validation unlock the Series A round.",
+      "suggestion": "Specify: '$2.0M funding will bring ARR to $1.2M and 50 enterprise clusters within 15 months'."
+    }
+  ],
+  "investor_objections": [
+    "Why won't AWS or Google Cloud build this right into EKS and GKE to commoditize you?",
+    "How do you convince conservative CTOs to allow an external AI agent write access to production clusters?",
+    "Is 12% gain-share sustainable once baseline costs stabilize and easy waste is trimmed?"
+  ],
+  "top_priorities": [
+    "Address cluster security and safe-rollback isolation on Slide 3 (Product)",
+    "Add specific ARR and expansion milestone targets on Slide 12 (Ask)",
+    "Quantify pilot conversion metrics on Slide 10 (Traction)"
+  ]
+}
