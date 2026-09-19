@@ -1,0 +1,90 @@
+{
+  "type": "B2B SaaS with Value-Share Hybrid Pricing",
+  "revenue_streams": [
+    {
+      "name": "Cluster Node Subscription",
+      "model_type": "Per-node SaaS subscription",
+      "price_point": "$18/node/month",
+      "frequency": "Monthly or Annual",
+      "margin": "88%",
+      "calculated": false,
+      "provenance": "founder_assumption"
+    },
+    {
+      "name": "Enterprise Savings Gain-Share",
+      "model_type": "Performance-based upside fee",
+      "price_point": "12% of verified net cloud reduction",
+      "frequency": "Quarterly in arrears",
+      "margin": "94%",
+      "calculated": false,
+      "provenance": "founder_assumption"
+    },
+    {
+      "name": "Enterprise Private VPC & Dedicated SLA",
+      "model_type": "Fixed annual service tier",
+      "price_point": "$15,000/year",
+      "frequency": "Annual upfront",
+      "margin": "75%",
+      "calculated": false,
+      "provenance": "founder_assumption"
+    }
+  ],
+  "pricing_tiers": [
+    {
+      "tier_name": "Starter",
+      "price": "$0 / free forever",
+      "billing": "Community edition",
+      "features": [
+        "Up to 10 nodes monitored",
+        "Cost telemetry visualization",
+        "Manual one-click right-sizing suggestions",
+        "Community Discord support"
+      ],
+      "target_audience": "Early stage startups and developer sandbox clusters"
+    },
+    {
+      "tier_name": "Growth",
+      "price": "$18 / node / mo",
+      "billing": "Billed annually or $22 monthly",
+      "features": [
+        "Up to 150 nodes",
+        "Autonomous pod and node right-sizing",
+        "Slack & PagerDuty integration",
+        "Automated instant rollback safety guarantees",
+        "SOC2 compliance audit logs"
+      ],
+      "target_audience": "High-growth scaleups with $20k-$100k/mo cloud spend"
+    },
+    {
+      "tier_name": "Enterprise",
+      "price": "Custom ($35k+ ACV)",
+      "billing": "Annual enterprise contract",
+      "features": [
+        "Unlimited nodes & multi-cloud clusters",
+        "Air-gapped private VPC deployment option",
+        "Custom SLA & dedicated FinOps engineer",
+        "SSO, SAML & role-based audit governance"
+      ],
+      "target_audience": "Enterprises with >$1M annual cloud infrastructure budget"
+    }
+  ],
+  "unit_economics": {
+    "cac": 6200,
+    "ltv": 38400,
+    "payback_months": 5.2,
+    "gross_margin": 87.5,
+    "ltv_cac_ratio": 6.19,
+    "provenance": "calculated",
+    "formulas": {
+      "ltv_cac_ratio": "LTV ($38,400) / CAC ($6,200) = 6.19x (Target: >3x)",
+      "payback_months": "CAC ($6,200) / (Monthly ARPU $1,350 × Gross Margin 87.5%) = 5.2 months (Target: <12 mo)",
+      "gross_margin": "(Revenue - Telemetry Ingestion Cloud Compute) / Revenue = 87.5%"
+    }
+  },
+  "cost_structure": [
+    "Cloud compute for continuous telemetry ingestion & AI inference models (8%)",
+    "Developer evangelism, content, and bottoms-up field sales (38%)",
+    "Core distributed systems & machine learning engineering (42%)",
+    "General, administrative & legal governance (12%)"
+  ]
+}

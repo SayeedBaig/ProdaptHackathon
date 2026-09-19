@@ -1,0 +1,6 @@
+{
+  "id": "inv-q-001",
+  "text": "Cloud infrastructure providers like AWS have strong incentives to keep customers slightly over-provisioned. However, they also offer Compute Optimizer. What stops AWS or Datadog from building this exact autonomous pod-level right-sizer and making your solution obsolete?",
+  "intent": "opening",
+  "topic": "differentiation"
+}

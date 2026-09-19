@@ -1,0 +1,7 @@
+{
+  "id": "q-clarify-001",
+  "text": "How do you intend to price HyperScale AI: a monthly platform fee per node, or a performance-based percentage of verified cloud savings?",
+  "target_field": "business_model.pricing",
+  "topic": "business_model",
+  "reasoning": "Pricing strategy determines sales cycle length and whether procurement views this as OPEX software or self-funding savings."
+}

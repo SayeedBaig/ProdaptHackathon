@@ -1,0 +1,36 @@
+{
+  "scores": {
+    "clarity": 8,
+    "specificity": 7,
+    "evidence": 6,
+    "business_reasoning": 8,
+    "differentiation": 9,
+    "scalability": 7
+  },
+  "explanation": "Strong answer articulating the fundamental conflict of interest cloud providers face (they profit directly from unoptimized compute) and contrasting Datadog's alert-only model against closed-loop automated execution.",
+  "strengths": [
+    "Articulated the structural misalignment: Hyperscalers have zero financial incentive to cut bills by 35%",
+    "Emphasized multi-cloud independence: 78% of enterprise clusters span multiple cloud providers"
+  ],
+  "weaknesses": [
+    "Lacked concrete quantitative evidence or direct quotes from your 8 active enterprise pilots",
+    "Did not mention proprietary data moat or algorithmic defensibility"
+  ],
+  "recommended_improvement": "Support your claim with pilot data: cite the CNCF multi-cloud report and specify the average number of hours saved weekly by pilot engineers.",
+  "weakest_criterion": "evidence",
+  "claims_made": [
+    "Hyperscalers are disincentivized from deep cost reductions",
+    "Enterprises run multi-cloud workloads that single-cloud tools cannot optimize"
+  ],
+  "follow_up_question": "Can you share specific data from your 8 pilots on how much engineering time was previously spent responding to passive alerts before installing HyperScale AI?",
+  "new_gaps": [
+    {
+      "id": "gap-inv-001",
+      "topic": "validation",
+      "text": "Collect and document quantitative time-spent benchmarks (hours/week) from existing 8 pilot teams to prove operational time savings.",
+      "severity": 3,
+      "status": "open",
+      "raised_by": "investor"
+    }
+  ]
+}
