@@ -37,16 +37,18 @@ async def analyze_startup_idea(
         model="gemini-2.0-flash",
     )
 
-    # Record first clarification turn
+    # Record first clarification turn if not already created
     if analysis_res.first_question:
-        ClarificationRepo.create_turn(
-            db=db,
-            startup_id=startup.id,
-            seq=1,
-            question=analysis_res.first_question.get("text", "Clarification question"),
-            target_field=analysis_res.first_question.get("target_field"),
-            profile_version_before=pv.version if pv else 1,
-        )
+        existing_turn = ClarificationRepo.get_turn(db, startup.id, 1)
+        if not existing_turn:
+            ClarificationRepo.create_turn(
+                db=db,
+                startup_id=startup.id,
+                seq=1,
+                question=analysis_res.first_question.get("text", "Clarification question"),
+                target_field=analysis_res.first_question.get("target_field"),
+                profile_version_before=pv.version if pv else 1,
+            )
 
     return DataEnvelope(data=analysis_res, meta=Meta(profile_version=pv.version if pv else 1))
 
