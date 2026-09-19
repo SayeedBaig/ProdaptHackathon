@@ -45,7 +45,7 @@ export const FeedbackPage: React.FC = () => {
   const currentProfile = profileEnvelope?.data;
 
   // 2. Fetch feedback items (from mockStore or endpoint)
-  const feedbackItems = mockStore.getFeedbackItems();
+  const feedbackItems = mockStore.getFeedbackItems(startupId);
 
   // 3. Extract feedback patches mutation
   const extractPatchesMutation = useMutation({

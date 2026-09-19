@@ -13,29 +13,80 @@ export const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('demo1234');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setAuth('mock-token-demo', {
-        id: '00000000-0000-0000-0000-000000000001',
-        email,
-        name: 'Alex Vance',
+    try {
+      const { apiClient } = await import('../../api/client');
+      const { ENDPOINTS } = await import('../../api/endpoints');
+      
+      const res = await apiClient<{ access_token: string }>(ENDPOINTS.AUTH_LOGIN, {
+        method: 'POST',
+        body: { email, password },
+        skipGlobalErrorToast: true,
       });
+      
+      const token = res.data.access_token;
+      
+      const meRes = await apiClient<{ id: string; email: string }>(ENDPOINTS.AUTH_ME, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      setAuth(token, {
+        id: meRes.data.id,
+        email: meRes.data.email,
+        name: 'Founder',
+      });
+      
       toast.success('Welcome back to PitchPilot!');
-      navigate('/');
-    }, 600);
+      navigate('/startups');
+    } catch (error) {
+      toast.error('Invalid email or password.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDemoBypass = () => {
-    setAuth('mock-token-demo', {
-      id: '00000000-0000-0000-0000-000000000001',
-      email: 'founder@hyperscale.ai',
-      name: 'Alex Vance',
-    });
-    toast.success('Logged in as Demo Founder');
-    navigate('/');
+  const handleDemoBypass = async () => {
+    setLoading(true);
+    try {
+      const { apiClient } = await import('../../api/client');
+      const { ENDPOINTS } = await import('../../api/endpoints');
+      
+      let res;
+      try {
+        res = await apiClient<{ access_token: string }>(ENDPOINTS.AUTH_LOGIN, {
+          method: 'POST',
+          body: { email: 'demo@pitchpilot.ai', password: 'password123' },
+          skipGlobalErrorToast: true,
+        });
+      } catch {
+        res = await apiClient<{ access_token: string }>(ENDPOINTS.AUTH_REGISTER, {
+          method: 'POST',
+          body: { email: 'demo@pitchpilot.ai', password: 'password123' },
+          skipGlobalErrorToast: true,
+        });
+      }
+      
+      const token = res.data.access_token;
+      const meRes = await apiClient<{ id: string; email: string }>(ENDPOINTS.AUTH_ME, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      setAuth(token, {
+        id: meRes.data.id,
+        email: meRes.data.email,
+        name: 'Demo Founder',
+      });
+      
+      toast.success('Logged in as Demo Founder (Live Backend)');
+      navigate('/startups');
+    } catch (error) {
+      toast.error('Could not start the demo account. Try creating an account instead.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

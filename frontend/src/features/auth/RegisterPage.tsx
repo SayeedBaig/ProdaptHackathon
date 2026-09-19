@@ -14,19 +14,39 @@ export const RegisterPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setAuth('mock-token-demo', {
-        id: `usr-${Date.now()}`,
-        email,
+    try {
+      const { apiClient } = await import('../../api/client');
+      const { ENDPOINTS } = await import('../../api/endpoints');
+      
+      const res = await apiClient<{ access_token: string }>(ENDPOINTS.AUTH_REGISTER, {
+        method: 'POST',
+        body: { email, password },
+        skipGlobalErrorToast: true,
+      });
+      
+      const token = res.data.access_token;
+      
+      const meRes = await apiClient<{ id: string; email: string }>(ENDPOINTS.AUTH_ME, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      setAuth(token, {
+        id: meRes.data.id,
+        email: meRes.data.email,
         name: name || 'Founder',
       });
+      
       toast.success('Account created successfully!');
-      navigate('/');
-    }, 600);
+      navigate('/startups');
+    } catch (error: any) {
+      toast.error(error?.status === 409 ? 'That email is already registered.' : 'Could not create account.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

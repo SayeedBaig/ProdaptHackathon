@@ -17,12 +17,14 @@ interface UiState {
   setProfileVersion: (version: number) => void;
 }
 
+const isMockMode = import.meta.env.VITE_USE_MOCKS === 'true';
+
 export const useUiStore = create<UiState>((set) => ({
-  currentStartupId: 'hyperscale-ai-001',
+  currentStartupId: isMockMode ? 'hyperscale-ai-001' : null,
   activeSlideIndex: 0,
   isDegradedBannerDismissed: false,
   sidebarOpen: true,
-  aiMode: (import.meta.env.VITE_USE_MOCKS === 'true' ? 'mock' : 'live') as AiMode,
+  aiMode: (isMockMode ? 'mock' : 'live') as AiMode,
   profileVersion: 1,
 
   setCurrentStartupId: (id) => set({ currentStartupId: id }),

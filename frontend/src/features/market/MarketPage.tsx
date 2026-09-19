@@ -20,6 +20,65 @@ import {
   Calculator,
 } from 'lucide-react';
 
+const fallbackMarketTier = (
+  label: string,
+  value?: number | null,
+  description?: string | null
+) => ({
+  value: value || 0,
+  formatted: value ? `$${value.toLocaleString()}` : 'Requires validation',
+  description: description || `${label} sizing requires validation.`,
+  calculation_steps: ['Founder inputs and market sizing assumptions need validation.'],
+  provenance: 'founder_assumption' as const,
+  sources: [],
+});
+
+const normalizeMarket = (raw: any): MarketAnalysis | null => {
+  if (!raw) return null;
+
+  return {
+    ...raw,
+    tam: raw.tam || fallbackMarketTier('TAM', raw.market_size?.tam, raw.market_size?.status),
+    sam: raw.sam || fallbackMarketTier('SAM', raw.market_size?.sam, raw.market_size?.status),
+    som: raw.som || fallbackMarketTier('SOM', raw.market_size?.som, raw.market_size?.status),
+    cagr: raw.cagr ?? 0,
+    growth_drivers: raw.growth_drivers || raw.opportunities?.map((item: any) => item.text || String(item)) || [],
+    market_risks: raw.market_risks || raw.threats?.map((item: any) => item.text || String(item)) || [],
+    assumptions: raw.assumptions || [],
+  };
+};
+
+const normalizeCompetitors = (raw: any): CompetitorAnalysis | null => {
+  if (!raw) return null;
+
+  const directCompetitors = raw.direct_competitors || raw.competitors || [];
+  return {
+    ...raw,
+    direct_competitors: directCompetitors.map((comp: any) => ({
+      name: comp.name || 'Unnamed competitor',
+      description: comp.description || comp.differentiation || 'No description available.',
+      strengths: comp.strengths || [],
+      weaknesses: comp.weaknesses || [],
+      pricing: comp.pricing || 'Not available',
+      market_share: comp.market_share || 'Not available',
+      differentiator: comp.differentiator || comp.differentiation || 'Differentiation requires validation.',
+      provenance: comp.provenance || 'ai_analysis',
+      source_urls: comp.source_urls || [],
+    })),
+    indirect_competitors: raw.indirect_competitors || [],
+    matrix_axes: raw.matrix_axes || {
+      x_axis: 'Passive reporting -> Autonomous action',
+      y_axis: 'Broad market -> Focused niche',
+    },
+    competitor_positions: raw.competitor_positions || directCompetitors.map((comp: any, index: number) => ({
+      name: comp.name || `Competitor ${index + 1}`,
+      x: -6 + index * 4,
+      y: 4 - index * 2,
+      is_self: false,
+    })),
+  };
+};
+
 export const MarketPage: React.FC = () => {
   const startupId = useUiStore((state) => state.currentStartupId) || 'hyperscale-ai-001';
 
@@ -57,8 +116,8 @@ export const MarketPage: React.FC = () => {
     );
   }
 
-  const market = marketEnvelope?.data;
-  const comp = competitorEnvelope?.data;
+  const market = normalizeMarket(marketEnvelope?.data);
+  const comp = normalizeCompetitors(competitorEnvelope?.data);
 
   // Calculated sandbox values
   const simTam = simAccounts * simAcv;
@@ -125,9 +184,11 @@ export const MarketPage: React.FC = () => {
                   </button>
                 </div>
 
-                <span className="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
-                  +{market.cagr}% CAGR
-                </span>
+                {market.cagr > 0 && (
+                  <span className="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                    +{market.cagr}% CAGR
+                  </span>
+                )}
               </div>
             </CardHeader>
             <CardContent>
@@ -248,12 +309,14 @@ export const MarketPage: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-slate-700">
-                  {market.growth_drivers.map((driver, i) => (
+                  {market.growth_drivers.length > 0 ? market.growth_drivers.map((driver, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-2" />
                       <span>{driver}</span>
                     </li>
-                  ))}
+                  )) : (
+                    <li className="text-slate-500">No growth catalysts have been validated yet.</li>
+                  )}
                 </ul>
               </CardContent>
             </Card>
@@ -267,12 +330,14 @@ export const MarketPage: React.FC = () => {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-slate-700">
-                  {market.market_risks.map((risk, i) => (
+                  {market.market_risks.length > 0 ? market.market_risks.map((risk, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-2" />
                       <span>{risk}</span>
                     </li>
-                  ))}
+                  )) : (
+                    <li className="text-slate-500">No market risks have been recorded yet.</li>
+                  )}
                 </ul>
               </CardContent>
             </Card>
@@ -297,10 +362,12 @@ export const MarketPage: React.FC = () => {
 
           <CompetitorTable competitors={comp.direct_competitors} />
 
-          <CompetitorMatrix2x2
-            axes={comp.matrix_axes}
-            positions={comp.competitor_positions}
-          />
+          {comp.competitor_positions.length > 0 && (
+            <CompetitorMatrix2x2
+              axes={comp.matrix_axes}
+              positions={comp.competitor_positions}
+            />
+          )}
         </div>
       )}
     </div>

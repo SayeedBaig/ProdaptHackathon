@@ -6,7 +6,8 @@ interface CriteriaBarChartProps {
 }
 
 export const CriteriaBarChart: React.FC<CriteriaBarChartProps> = ({ scores }) => {
-  const keys = Object.keys(scores) as CriteriaKey[];
+  const safeScores = scores || {};
+  const keys = Object.keys(safeScores) as CriteriaKey[];
 
   const getBarColor = (score: number): string => {
     if (score >= 8) return 'bg-emerald-500';
@@ -18,7 +19,7 @@ export const CriteriaBarChart: React.FC<CriteriaBarChartProps> = ({ scores }) =>
   return (
     <div className="space-y-3">
       {keys.map((key) => {
-        const score = scores[key];
+        const score = safeScores[key] || 0;
         const percentage = Math.min(100, Math.max(0, (score / 10) * 100));
 
         return (

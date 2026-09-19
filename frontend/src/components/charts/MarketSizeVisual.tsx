@@ -10,6 +10,24 @@ interface MarketSizeVisualProps {
 }
 
 export const MarketSizeVisual: React.FC<MarketSizeVisualProps> = ({ tam, sam, som }) => {
+  const tiers = {
+    tam: {
+      ...tam,
+      calculation_steps: tam.calculation_steps || [],
+      sources: tam.sources || [],
+    },
+    sam: {
+      ...sam,
+      calculation_steps: sam.calculation_steps || [],
+      sources: sam.sources || [],
+    },
+    som: {
+      ...som,
+      calculation_steps: som.calculation_steps || [],
+      sources: som.sources || [],
+    },
+  };
+
   return (
     <div className="space-y-6">
       {/* Tiered Nested Cards */}
@@ -22,24 +40,24 @@ export const MarketSizeVisual: React.FC<MarketSizeVisualProps> = ({ tam, sam, so
                 Total Addressable Market (TAM)
               </span>
               <span className="text-2xl sm:text-3xl font-extrabold text-blue-950">
-                {tam.formatted}
+                {tiers.tam.formatted}
               </span>
             </div>
-            <ProvenanceBadge provenance={tam.provenance} showLabel />
+            <ProvenanceBadge provenance={tiers.tam.provenance} showLabel />
           </div>
-          <p className="text-sm font-medium text-blue-900 mb-3">{tam.description}</p>
+          <p className="text-sm font-medium text-blue-900 mb-3">{tiers.tam.description}</p>
           <div className="p-3 bg-white/80 rounded-xl text-xs space-y-1 text-slate-600 border border-blue-100">
             <div className="font-semibold text-slate-700">Calculation Baseline:</div>
-            {tam.calculation_steps.map((step, i) => (
+            {tiers.tam.calculation_steps.map((step, i) => (
               <div key={i} className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
                 <span>{step}</span>
               </div>
             ))}
-            {tam.sources && tam.sources.length > 0 && (
+            {tiers.tam.sources.length > 0 && (
               <div className="pt-2 mt-2 border-t border-slate-100 flex flex-wrap items-center gap-2 text-blue-700">
                 <span className="font-semibold">Sources:</span>
-                {tam.sources.map((src, i) => (
+                {tiers.tam.sources.map((src, i) => (
                   <span key={i} className="inline-flex items-center gap-1 bg-blue-50 px-2 py-0.5 rounded text-[11px]">
                     {src} <ExternalLink className="w-3 h-3" />
                   </span>
@@ -57,24 +75,24 @@ export const MarketSizeVisual: React.FC<MarketSizeVisualProps> = ({ tam, sam, so
                 Serviceable Addressable Market (SAM)
               </span>
               <span className="text-2xl sm:text-3xl font-extrabold text-indigo-950">
-                {sam.formatted}
+                {tiers.sam.formatted}
               </span>
             </div>
-            <ProvenanceBadge provenance={sam.provenance} showLabel />
+            <ProvenanceBadge provenance={tiers.sam.provenance} showLabel />
           </div>
-          <p className="text-sm font-medium text-indigo-900 mb-3">{sam.description}</p>
+          <p className="text-sm font-medium text-indigo-900 mb-3">{tiers.sam.description}</p>
           <div className="p-3 bg-white/80 rounded-xl text-xs space-y-1 text-slate-600 border border-indigo-100">
             <div className="font-semibold text-slate-700">Calculation Baseline:</div>
-            {sam.calculation_steps.map((step, i) => (
+            {tiers.sam.calculation_steps.map((step, i) => (
               <div key={i} className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
                 <span>{step}</span>
               </div>
             ))}
-            {sam.sources && sam.sources.length > 0 && (
+            {tiers.sam.sources.length > 0 && (
               <div className="pt-2 mt-2 border-t border-slate-100 flex flex-wrap items-center gap-2 text-indigo-700">
                 <span className="font-semibold">Sources:</span>
-                {sam.sources.map((src, i) => (
+                {tiers.sam.sources.map((src, i) => (
                   <span key={i} className="inline-flex items-center gap-1 bg-indigo-50 px-2 py-0.5 rounded text-[11px]">
                     {src} <ExternalLink className="w-3 h-3" />
                   </span>
@@ -92,24 +110,24 @@ export const MarketSizeVisual: React.FC<MarketSizeVisualProps> = ({ tam, sam, so
                 Serviceable Obtainable Market (SOM)
               </span>
               <span className="text-2xl sm:text-3xl font-extrabold text-emerald-950">
-                {som.formatted}
+                {tiers.som.formatted}
               </span>
             </div>
-            <ProvenanceBadge provenance={som.provenance} showLabel />
+            <ProvenanceBadge provenance={tiers.som.provenance} showLabel />
           </div>
-          <p className="text-sm font-medium text-emerald-900 mb-3">{som.description}</p>
+          <p className="text-sm font-medium text-emerald-900 mb-3">{tiers.som.description}</p>
           <div className="p-3 bg-white/80 rounded-xl text-xs space-y-1 text-slate-600 border border-emerald-100">
             <div className="font-semibold text-slate-700">Bottoms-up Beachhead Calculation:</div>
-            {som.calculation_steps.map((step, i) => (
+            {tiers.som.calculation_steps.map((step, i) => (
               <div key={i} className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                 <span>{step}</span>
               </div>
             ))}
-            {som.sources && som.sources.length > 0 && (
+            {tiers.som.sources.length > 0 && (
               <div className="pt-2 mt-2 border-t border-slate-100 flex flex-wrap items-center gap-2 text-emerald-700">
                 <span className="font-semibold">Sources:</span>
-                {som.sources.map((src, i) => (
+                {tiers.som.sources.map((src, i) => (
                   <span key={i} className="inline-flex items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded text-[11px]">
                     {src} <ExternalLink className="w-3 h-3" />
                   </span>

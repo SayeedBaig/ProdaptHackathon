@@ -12,6 +12,7 @@ from app.api.routes import (
     readiness,
     feedback,
     health,
+    compat,
 )
 
 app = FastAPI(
@@ -48,6 +49,7 @@ api_v1_router.include_router(pitch.router)
 api_v1_router.include_router(investor.router)
 api_v1_router.include_router(readiness.router)
 api_v1_router.include_router(feedback.router)
+api_v1_router.include_router(compat.router)
 
 app.include_router(api_v1_router)
 
@@ -61,6 +63,7 @@ api_router.include_router(pitch.router)
 api_router.include_router(investor.router)
 api_router.include_router(readiness.router)
 api_router.include_router(feedback.router)
+api_router.include_router(compat.router)
 
 app.include_router(api_router)
 

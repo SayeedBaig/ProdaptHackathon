@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { WorkspaceHeader } from './WorkspaceHeader';
 import { SidebarStepper } from './SidebarStepper';
 import { DegradedBanner } from './DegradedBanner';
@@ -10,16 +10,23 @@ import { Profile } from '../../types/profile';
 import { useUiStore } from '../../store/uiStore';
 
 export const AppLayout: React.FC = () => {
-  const currentStartupId = useUiStore((state) => state.currentStartupId) || 'hyperscale-ai-001';
+  const currentStartupId = useUiStore((state) => state.currentStartupId);
+  const isMock = import.meta.env.VITE_USE_MOCKS === 'true';
+  const effectiveStartupId = currentStartupId || (isMock ? 'hyperscale-ai-001' : null);
 
   // Fetch startup profile to keep header and version synced
   const { data: profileEnvelope } = useQuery({
-    queryKey: ['profile', currentStartupId],
-    queryFn: () => apiClient<Profile>(ENDPOINTS.PROFILE_GET(currentStartupId)),
+    queryKey: ['profile', effectiveStartupId],
+    queryFn: () => apiClient<Profile>(ENDPOINTS.PROFILE_GET(effectiveStartupId!)),
     staleTime: 30000,
+    enabled: !!effectiveStartupId,
   });
 
-  const startupName = profileEnvelope?.data?.identity?.startup_name || 'HyperScale AI';
+  if (!effectiveStartupId) {
+    return <Navigate to="/startups" replace />;
+  }
+
+  const startupName = profileEnvelope?.data?.identity?.startup_name || 'Current Startup';
   const warnings = profileEnvelope?.meta?.warnings || [];
 
   return (

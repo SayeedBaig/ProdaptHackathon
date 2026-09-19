@@ -6,16 +6,17 @@ import { Button } from '../ui/Button';
 import { mockStore } from '../../mocks/mockStore';
 import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { Sparkles, LogOut, Rocket, Menu, Bug, Award } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Sparkles, LogOut, Rocket, Menu, Bug, Award, ArrowLeft, FolderOpen } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface WorkspaceHeaderProps {
   startupName?: string;
 }
 
 export const WorkspaceHeader: React.FC<WorkspaceHeaderProps> = ({
-  startupName = 'HyperScale AI',
+  startupName = 'Current Startup',
 }) => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const aiMode = useUiStore((state) => state.aiMode);
   const profileVersion = useUiStore((state) => state.profileVersion);
@@ -34,8 +35,8 @@ export const WorkspaceHeader: React.FC<WorkspaceHeaderProps> = ({
   const handleResetSampleStartup = () => {
     mockStore.resetToSample();
     queryClient.invalidateQueries();
-    toast.success('Workspace reset to sample startup!', {
-      description: 'Loaded HyperScale AI with all 12 slides, profile, and feedback.',
+    toast.success('Workspace reset to demo startup!', {
+      description: 'Loaded the bundled demo profile, slides, and feedback.',
     });
   };
 
@@ -78,6 +79,25 @@ export const WorkspaceHeader: React.FC<WorkspaceHeaderProps> = ({
           <span className="font-extrabold text-xl tracking-tight text-slate-900 hidden sm:inline">
             PitchPilot
           </span>
+        </Link>
+
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+          title="Go back"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Back
+        </button>
+
+        <Link
+          to="/startups"
+          className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+          title="Choose startup"
+        >
+          <FolderOpen className="w-3.5 h-3.5" />
+          Startups
         </Link>
 
         <span className="text-slate-300 hidden sm:inline">/</span>

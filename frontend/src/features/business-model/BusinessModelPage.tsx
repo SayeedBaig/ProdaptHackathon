@@ -20,6 +20,41 @@ import {
   Sparkles,
 } from 'lucide-react';
 
+const normalizeBusinessModel = (raw: any): BusinessModelAnalysis | null => {
+  if (!raw) return null;
+
+  const revenueStreams = raw.revenue_streams || [
+    {
+      name: 'Primary Revenue',
+      model_type: raw.revenue_source || raw.type || 'Revenue model requires validation',
+      price_point: raw.pricing || 'Pricing requires validation',
+      frequency: 'TBD',
+      margin: 'TBD',
+      calculated: false,
+      provenance: 'founder_assumption',
+    },
+  ];
+
+  const pricingTiers = raw.pricing_tiers || [
+    {
+      tier_name: 'Initial Offer',
+      price: raw.pricing || 'TBD',
+      billing: 'Requires validation',
+      features: [raw.go_to_market || 'Go-to-market plan requires validation'],
+      target_audience: raw.customer || raw.payer || 'Target customer requires validation',
+    },
+  ];
+
+  return {
+    ...raw,
+    type: raw.type || 'Business model requires validation',
+    revenue_streams: revenueStreams,
+    pricing_tiers: pricingTiers,
+    unit_economics: raw.unit_economics || null,
+    cost_structure: raw.cost_structure || (raw.costs ? [raw.costs] : []),
+  };
+};
+
 export const BusinessModelPage: React.FC = () => {
   const startupId = useUiStore((state) => state.currentStartupId) || 'hyperscale-ai-001';
 
@@ -48,7 +83,7 @@ export const BusinessModelPage: React.FC = () => {
     );
   }
 
-  const bm = envelope?.data;
+  const bm = normalizeBusinessModel(envelope?.data);
   const ue = bm?.unit_economics;
 
   // Sandbox Live Calculations
@@ -221,7 +256,7 @@ export const BusinessModelPage: React.FC = () => {
                   <div className="font-bold text-slate-800 flex items-center gap-1.5 mb-1">
                     <span>🔢 Mathematical Calculation Formulas & Assumptions:</span>
                   </div>
-                  {Object.entries(ue.formulas).map(([key, formula]) => (
+                  {Object.entries(ue.formulas || {}).map(([key, formula]) => (
                     <div key={key} className="flex items-center gap-2 font-mono">
                       <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
                       <span className="font-semibold text-slate-700">{key}:</span>
@@ -362,7 +397,7 @@ export const BusinessModelPage: React.FC = () => {
                 <Card key={rev.name} className="hover:shadow-card-hover transition-all">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base font-bold">{rev.name}</CardTitle>
-                    <ProvenanceBadge provenance={rev.provenance} />
+                    <ProvenanceBadge provenance={rev.provenance || 'founder_assumption'} />
                   </CardHeader>
                   <CardContent className="space-y-2 text-sm">
                     <div>
@@ -422,7 +457,7 @@ export const BusinessModelPage: React.FC = () => {
                     </div>
 
                     <ul className="space-y-2 text-xs text-slate-700">
-                      {tier.features.map((feat, i) => (
+                      {(tier.features || []).map((feat, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{feat}</span>

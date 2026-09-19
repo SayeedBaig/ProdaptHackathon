@@ -21,7 +21,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   slide,
   index,
   total,
-  startupName = 'HyperScale AI',
+  startupName = 'Current Startup',
   onPrev,
   onNext,
   onAddBullet,

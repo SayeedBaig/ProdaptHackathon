@@ -27,7 +27,7 @@ export const SlideRail: React.FC<SlideRailProps> = ({
 
         return (
           <button
-            key={slide.key}
+            key={`${slide.key}-${idx}`}
             onClick={() => onSelectSlide(idx)}
             className={`w-full text-left p-3 rounded-xl border transition-all flex items-start justify-between gap-2 group ${
               isActive
@@ -51,7 +51,7 @@ export const SlideRail: React.FC<SlideRailProps> = ({
                     isActive ? 'text-brand-950' : 'text-slate-800'
                   }`}
                 >
-                  {SLIDE_TITLES[slide.key] || slide.title}
+                  {SLIDE_TITLES[slide.key] || slide.title || `Slide ${idx + 1}`}
                 </div>
                 <div className="text-[11px] text-slate-400 mt-0.5">
                   {slide.bullets?.length || 0} claims / bullets

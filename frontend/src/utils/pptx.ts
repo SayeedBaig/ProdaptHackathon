@@ -7,7 +7,7 @@ import { SLIDE_TITLES, PROVENANCE_LABELS } from '../types/contracts';
  */
 export async function exportPitchDeckToPptx(
   pitch: Pitch,
-  startupName = 'HyperScale AI'
+  startupName = 'Current Startup'
 ): Promise<void> {
   const pptxModule = await import('pptxgenjs');
   const PptxGen = pptxModule.default;

@@ -19,9 +19,10 @@ export const CriteriaRadarChart: React.FC<CriteriaRadarChartProps> = ({
   scores,
   height = 320,
 }) => {
-  const data = (Object.keys(scores) as CriteriaKey[]).map((key) => ({
+  const safeScores = scores || {};
+  const data = (Object.keys(safeScores) as CriteriaKey[]).map((key) => ({
     criterion: CRITERIA_LABELS[key] || key,
-    score: scores[key],
+    score: safeScores[key] || 0,
     fullMark: 10,
   }));
 

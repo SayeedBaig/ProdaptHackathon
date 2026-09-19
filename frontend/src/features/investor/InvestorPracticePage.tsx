@@ -50,39 +50,65 @@ const INVESTOR_PERSONAS = [
     id: 'marc',
     name: 'Marc A.',
     title: 'General Partner (Growth Fund)',
-    focus: 'TAM, Unit Economics & Margin Expansion',
+    focus: 'Market size, monetization, and validation evidence',
     avatar: '💼',
   },
   {
     id: 'elena',
     name: 'Dr. Elena R.',
-    title: 'Deep-Tech Partner (Systems & ML)',
-    focus: 'Algorithmic Defensibility & Kernel Moats',
-    avatar: '🔬',
+    title: 'Product Partner',
+    focus: 'Product differentiation and user behavior',
+    avatar: '🧭',
   },
   {
     id: 'jason',
     name: 'Jason K.',
-    title: 'Former Enterprise SRE VP',
-    focus: 'Cluster Security & Rollback Reliability',
-    avatar: '🛡️',
+    title: 'Operator-in-Residence',
+    focus: 'Launch operations and execution risk',
+    avatar: '🛠️',
   },
 ];
 
 const ANSWER_TEMPLATES = [
   {
-    label: 'Defend against AWS',
-    text: 'Cloud hyperscalers have negative financial incentives to aggressively cut bills by 35% because compute over-provisioning directly drives their top-line revenue. Furthermore, 78% of enterprise clusters span multi-cloud (AWS + GCP) where native single-cloud tools cannot operate.',
+    label: 'Pilot Evidence',
+    text: 'We will validate demand with 50 hostel student interviews, track the top meal-selection criteria, and run a two-week pilot with nearby food vendors to measure repeat usage.',
   },
   {
-    label: 'Cite Pilot Evidence',
-    text: 'Across our 8 production pilots managing 320 nodes over 4 months, HyperScale AI achieved a verified 34.8% cost reduction without a single container restart eviction or SLA outage, saving DevOps teams an average of 12 engineering hours per week.',
+    label: 'Defend Differentiation',
+    text: 'Unlike generic food delivery apps, we focus on student-specific ranking across price, nutrition, distance, and preferences, with campus-level vendor data and feedback loops.',
   },
   {
-    label: 'Contrast Datadog Alert Fatigue',
-    text: 'Datadog and Kubecost only visualize waste—they flood engineers with Jira tickets that get backlogged. HyperScale AI is a closed-loop autonomous agent that executes right-sizing directly with instant 1-click rollback guarantees.',
+    label: 'Business Model',
+    text: 'We will start free for students, then test vendor partner subscriptions, promoted healthy meal listings, and student premium filters after usage is validated.',
   },
 ];
+
+const normalizeQuestion = (raw: any): InvestorQuestion => ({
+  id: raw?.id || `inv-q-${Date.now()}`,
+  text: raw?.text || 'What is the strongest evidence that this startup can win its initial market?',
+  intent: raw?.intent || 'follow_up',
+  topic: raw?.topic || 'validation',
+});
+
+const normalizeEvaluation = (raw: any): AnswerEvaluation => ({
+  scores: raw?.scores || {
+    clarity: 6,
+    specificity: 5,
+    evidence: 4,
+    business_reasoning: 5,
+    differentiation: 5,
+    scalability: 5,
+  },
+  explanation: raw?.explanation || 'The answer was evaluated, but the model returned limited narrative detail.',
+  strengths: raw?.strengths || [],
+  weaknesses: raw?.weaknesses || [],
+  recommended_improvement: raw?.recommended_improvement || 'Add concrete customer evidence, numbers, and defensibility.',
+  weakest_criterion: raw?.weakest_criterion || 'evidence',
+  claims_made: raw?.claims_made || [],
+  follow_up_question: raw?.follow_up_question || null,
+  new_gaps: raw?.new_gaps || [],
+});
 
 export const InvestorPracticePage: React.FC = () => {
   const queryClient = useQueryClient();
@@ -97,9 +123,9 @@ export const InvestorPracticePage: React.FC = () => {
   const [founderInput, setFounderInput] = useState('');
   const [currentQuestion, setCurrentQuestion] = useState<InvestorQuestion>({
     id: 'inv-q-001',
-    text: 'Cloud infrastructure providers like AWS have strong incentives to keep customers slightly over-provisioned. However, they also offer Compute Optimizer. What stops AWS or Datadog from building this exact autonomous pod-level right-sizer and making your solution obsolete?',
+    text: 'What evidence will prove that your target users will choose this product instead of their current alternatives?',
     intent: 'opening',
-    topic: 'differentiation',
+    topic: 'validation',
   });
 
   // 1. Generate Next Question Mutation
@@ -116,9 +142,10 @@ export const InvestorPracticePage: React.FC = () => {
         },
       }),
     onSuccess: (res) => {
-      setCurrentQuestion(res.data);
-      setCurrentTurnIntent(res.data.intent);
-      setCurrentTopic(res.data.topic);
+      const question = normalizeQuestion(res.data);
+      setCurrentQuestion(question);
+      setCurrentTurnIntent(question.intent);
+      setCurrentTopic(question.topic);
       setFounderInput('');
       toast.success(`${selectedPersona.name} formulated next question`);
     },
@@ -138,7 +165,7 @@ export const InvestorPracticePage: React.FC = () => {
         },
       }),
     onSuccess: (res) => {
-      const evaluation = res.data;
+      const evaluation = normalizeEvaluation(res.data);
       const newTurn: Turn = {
         id: `turn-${Date.now()}`,
         question: currentQuestion,
@@ -194,9 +221,9 @@ export const InvestorPracticePage: React.FC = () => {
     setTurns([]);
     setCurrentQuestion({
       id: 'inv-q-001',
-      text: 'Cloud infrastructure providers like AWS have strong incentives to keep customers slightly over-provisioned. However, they also offer Compute Optimizer. What stops AWS or Datadog from building this exact autonomous pod-level right-sizer and making your solution obsolete?',
+      text: 'What evidence will prove that your target users will choose this product instead of their current alternatives?',
       intent: 'opening',
-      topic: 'differentiation',
+      topic: 'validation',
     });
     setFounderInput('');
   };
@@ -511,7 +538,7 @@ export const InvestorPracticePage: React.FC = () => {
 
               <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
                 <span className="text-xs text-slate-400">
-                  Tip: Back up assumptions with metrics, pilot evidence, or multi-cloud market data.
+                  Tip: Back up assumptions with interviews, pilot evidence, usage metrics, or willingness-to-pay data.
                 </span>
 
                 <Button

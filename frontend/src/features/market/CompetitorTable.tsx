@@ -9,13 +9,14 @@ interface CompetitorTableProps {
 
 export const CompetitorTable: React.FC<CompetitorTableProps> = ({ competitors }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const safeCompetitors = competitors || [];
 
-  const filtered = competitors.filter((c) => {
+  const filtered = safeCompetitors.filter((c) => {
     const q = searchQuery.toLowerCase();
     return (
-      c.name.toLowerCase().includes(q) ||
-      c.description.toLowerCase().includes(q) ||
-      c.differentiator.toLowerCase().includes(q)
+      (c.name || '').toLowerCase().includes(q) ||
+      (c.description || '').toLowerCase().includes(q) ||
+      (c.differentiator || '').toLowerCase().includes(q)
     );
   });
 
@@ -34,7 +35,7 @@ export const CompetitorTable: React.FC<CompetitorTableProps> = ({ competitors })
           />
         </div>
         <span className="text-xs text-slate-500 font-medium">
-          Showing {filtered.length} of {competitors.length} competitors
+          Showing {filtered.length} of {safeCompetitors.length} competitors
         </span>
       </div>
 
@@ -81,7 +82,7 @@ export const CompetitorTable: React.FC<CompetitorTableProps> = ({ competitors })
 
                 <td className="p-4 align-top">
                   <ul className="space-y-1 text-xs text-slate-600">
-                    {comp.strengths.map((st, i) => (
+                    {(comp.strengths || []).map((st, i) => (
                       <li key={i} className="flex items-start gap-1.5">
                         <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{st}</span>
@@ -92,7 +93,7 @@ export const CompetitorTable: React.FC<CompetitorTableProps> = ({ competitors })
 
                 <td className="p-4 align-top">
                   <ul className="space-y-1 text-xs text-slate-600">
-                    {comp.weaknesses.map((wk, i) => (
+                    {(comp.weaknesses || []).map((wk, i) => (
                       <li key={i} className="flex items-start gap-1.5">
                         <X className="w-3.5 h-3.5 text-rose-500 shrink-0 mt-0.5" />
                         <span>{wk}</span>

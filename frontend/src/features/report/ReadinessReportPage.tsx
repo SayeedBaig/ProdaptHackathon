@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '../../api/client';
 import { ENDPOINTS } from '../../api/endpoints';
 import { ReadinessNarrative } from '../../types/capabilities';
+import { Profile } from '../../types/profile';
 import { useUiStore } from '../../store/uiStore';
 import { CriteriaRadarChart } from '../../components/charts/CriteriaRadarChart';
 import { Card, CardHeader, CardTitle, CardContent } from '../../components/ui/Card';
@@ -23,6 +24,39 @@ import {
   Square,
   Sparkles,
 } from 'lucide-react';
+
+const DEFAULT_CRITERIA = {
+  clarity: 6,
+  specificity: 5,
+  evidence: 4,
+  business_reasoning: 5,
+  differentiation: 5,
+  scalability: 5,
+};
+
+const DEFAULT_TOPIC_COVERAGE = {
+  problem: 60,
+  market: 40,
+  differentiation: 40,
+  business_model: 40,
+  validation: 30,
+};
+
+const normalizeReadinessReport = (raw: any): ReadinessNarrative | null => {
+  if (!raw) return null;
+
+  return {
+    overall_score: raw.overall_score ?? raw.overall ?? 50,
+    verdict: raw.verdict || 'Needs Validation',
+    executive_summary: raw.executive_summary || raw.summary || 'Investor readiness narrative requires more validated profile detail.',
+    criteria_scores: raw.criteria_scores || DEFAULT_CRITERIA,
+    topic_coverage: raw.topic_coverage || DEFAULT_TOPIC_COVERAGE,
+    top_strengths: raw.top_strengths || Object.values(raw.why || {}).filter(Boolean),
+    critical_gaps: raw.critical_gaps || raw.top_gaps || [],
+    action_items: raw.action_items || raw.action_plan || raw.top_gaps || [],
+    investor_verdict: raw.investor_verdict || raw.disclaimer || 'Use this as coaching guidance, not an investment prediction.',
+  };
+};
 
 const INITIAL_CHECKLIST = [
   { id: 'chk-1', text: '12-Slide Presentation Deck complete and exported to PPTX', checked: true },
@@ -46,6 +80,13 @@ export const ReadinessReportPage: React.FC = () => {
       }),
   });
 
+  const { data: profileEnvelope } = useQuery({
+    queryKey: ['profile', startupId],
+    queryFn: () => apiClient<Profile>(ENDPOINTS.PROFILE_GET(startupId)),
+    staleTime: 30000,
+  });
+  const startupName = profileEnvelope?.data?.identity?.startup_name || 'Current Startup';
+
   const handlePrint = () => {
     window.print();
   };
@@ -67,7 +108,7 @@ export const ReadinessReportPage: React.FC = () => {
     );
   }
 
-  const report = envelope?.data;
+  const report = normalizeReadinessReport(envelope?.data);
   const completedChecks = checklist.filter((c) => c.checked).length;
 
   return (
@@ -111,7 +152,7 @@ export const ReadinessReportPage: React.FC = () => {
                     Evaluation Target
                   </span>
                   <h2 className="text-2xl font-black text-slate-900">
-                    HyperScale AI — Series Seed Pitch
+                    {startupName} — Investor Readiness
                   </h2>
                   <div className="text-xs text-slate-500 flex items-center gap-2 mt-1">
                     <Calendar className="w-3.5 h-3.5" />

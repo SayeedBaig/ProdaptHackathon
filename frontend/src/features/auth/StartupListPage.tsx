@@ -23,7 +23,7 @@ export const StartupListPage: React.FC = () => {
 
   const { data: envelope, isLoading } = useQuery({
     queryKey: ['startups'],
-    queryFn: () => apiClient<StartupSummary[]>(ENDPOINTS.STARTUPS),
+    queryFn: () => apiClient<StartupSummary[] | { items: StartupSummary[] }>(ENDPOINTS.STARTUPS),
   });
 
   const createMutation = useMutation({
@@ -57,7 +57,8 @@ export const StartupListPage: React.FC = () => {
     createMutation.mutate({ name, raw_idea: rawIdea });
   };
 
-  const startups = envelope?.data || [];
+  const startupsData = envelope?.data;
+  const startups = Array.isArray(startupsData) ? startupsData : startupsData?.items || [];
 
   return (
     <div className="min-h-screen bg-slate-50 p-6 md:p-12">
@@ -107,7 +108,7 @@ export const StartupListPage: React.FC = () => {
                 </CardHeader>
                 <CardContent className="pt-1">
                   <p className="text-sm text-slate-600 line-clamp-2 min-h-[2.5rem]">
-                    {renderNullSafe(s.one_liner, (text) => text)}
+                    {renderNullSafe(s.one_liner || (s as any).raw_idea, (text) => text)}
                   </p>
 
                   <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">

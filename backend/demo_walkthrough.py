@@ -21,9 +21,12 @@ def main():
     print(f"Status: {res.status_code}")
     print(f"System State: {res.json()}")
 
-    # 2. Login
+    # 2. Login / Register
     print_section("2. AUTHENTICATION (JWT)")
     login_data = {"email": "demo@pitchpilot.ai", "password": "password123"}
+    # Try to register first since DB might be empty
+    client.post("/auth/register", json=login_data)
+    
     res = client.post("/auth/login", json=login_data)
     token = res.json()["data"]["access_token"]
     headers = {"Authorization": f"Bearer {token}"}
@@ -34,8 +37,13 @@ def main():
     print_section("3. FETCH STARTUP & PROFILE VERSION 1")
     res = client.get("/startups", headers=headers)
     startups = res.json()["data"]["items"]
-    startup_id = startups[0]["id"]
-    print(f"Startup Name: {startups[0]['name']} (ID: {startup_id})")
+    if not startups:
+        create_res = client.post("/startups", json={"name": "HyperScale AI", "raw_idea": "An AI platform for hostel students to order cheap food."}, headers=headers)
+        startup_id = create_res.json()["data"]["id"]
+        print(f"Created new startup: HyperScale AI (ID: {startup_id})")
+    else:
+        startup_id = startups[0]["id"]
+        print(f"Startup Name: {startups[0]['name']} (ID: {startup_id})")
 
     res = client.get(f"/startups/{startup_id}", headers=headers)
     startup_detail = res.json()["data"]

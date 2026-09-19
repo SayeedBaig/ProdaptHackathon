@@ -28,16 +28,16 @@ import { toast } from 'sonner';
 
 const IDEA_PRESETS = [
   {
-    title: 'Kubernetes FinOps (Default)',
-    idea: 'Autonomous Kubernetes infrastructure optimization agent that analyzes real-time telemetry to right-size CPU/RAM allocations, reducing cloud bills by 35% with zero downtime.',
+    title: 'Hostel Food Finder',
+    idea: 'An app that helps college students living in hostels find affordable and healthy food near their campus. It shows nearby food options based on price, nutrition, distance, and student preferences.',
   },
   {
-    title: 'Clinical Trial AI',
-    idea: 'AI platform connecting oncology clinical trials with underrepresented patient cohorts by analyzing electronic health record (EHR) genomics in real-time, accelerating trial enrollment by 4x.',
+    title: 'Local Tutor Match',
+    idea: 'A platform that helps school students find trusted local tutors based on subject, budget, distance, ratings, and learning style.',
   },
   {
-    title: 'Cyber Incident Co-Pilot',
-    idea: 'Autonomous tier-1 Security Operations Center (SOC) agent that correlates cloud threat alerts, writes forensic timelines, and automatically isolates compromised AWS IAM credentials.',
+    title: 'Clinic Queue Manager',
+    idea: 'A lightweight app for small clinics that lets patients book slots, track queue position, and receive reminders before their turn.',
   },
 ];
 
@@ -85,8 +85,12 @@ export const OverviewProfilePage: React.FC = () => {
         },
       }),
     onSuccess: (res) => {
+      const isFoodIdea = /food|meal|hostel|student/i.test(ideaInput);
       const ops = [
         { op: 'set' as const, path: '/identity/raw_idea', value: ideaInput, reason: 'Updated raw idea' },
+        ...(isFoodIdea && profile?.identity?.startup_name === 'HyperScale AI'
+          ? [{ op: 'set' as const, path: '/identity/startup_name', value: 'CampusMeal Finder', reason: 'Updated demo workspace name from idea context' }]
+          : []),
         { op: 'set' as const, path: '/problem/statement', value: res.data.problem, reason: 'AI idea analysis' },
         { op: 'set' as const, path: '/problem/pain_points', value: res.data.pain_points, reason: 'AI idea analysis' },
         { op: 'set' as const, path: '/solution/description', value: res.data.solution, reason: 'AI idea analysis' },
@@ -260,7 +264,7 @@ export const OverviewProfilePage: React.FC = () => {
               value={ideaInput}
               onChange={(e) => setIdeaInput(e.target.value)}
               rows={3}
-              placeholder="e.g. An autonomous Kubernetes cost optimization agent that right-sizes pod allocations to reduce cloud bills by 35% with zero downtime..."
+              placeholder="e.g. An app that helps hostel students find affordable, healthy meals near campus based on price, nutrition, distance, and preferences..."
               className="w-full px-3.5 py-2.5 text-base border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none resize-none bg-white"
             />
 

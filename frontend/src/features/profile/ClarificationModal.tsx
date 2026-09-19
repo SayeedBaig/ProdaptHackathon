@@ -186,23 +186,23 @@ export const ClarificationModal: React.FC<ClarificationModalProps> = ({
                   type="button"
                   onClick={() =>
                     setAnswer(
-                      'We will charge a hybrid model: $18/node/month platform subscription plus 12% of verified cloud savings for clusters over 50 nodes.'
+                      'We will start with two nearby hostel clusters and collect menu price, nutrition, distance, and student preference data from local vendors.'
                     )
                   }
                   className="text-xs px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors"
                 >
-                  Hybrid $18/node + 12% Savings
+                  Campus Launch Plan
                 </button>
                 <button
                   type="button"
                   onClick={() =>
                     setAnswer(
-                      'Annual enterprise license starting at $35,000 ACV including private VPC deployment and custom SLA guarantees.'
+                      'Students will use the app for free first; we will test vendor-paid promoted listings and subscription tools after validating repeat student usage.'
                     )
                   }
                   className="text-xs px-2.5 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors"
                 >
-                  Enterprise $35k ACV Contract
+                  Vendor Revenue Model
                 </button>
               </div>
             </div>

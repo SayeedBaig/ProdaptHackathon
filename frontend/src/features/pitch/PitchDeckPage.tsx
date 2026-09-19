@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '../../api/client';
 import { ENDPOINTS } from '../../api/endpoints';
 import { Pitch, Claim } from '../../types/capabilities';
+import { Profile } from '../../types/profile';
 import { useUiStore } from '../../store/uiStore';
 import { SlideRail } from './SlideRail';
 import { SlideViewer } from './SlideViewer';
@@ -22,12 +23,33 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 
+const normalizePitch = (raw: any): Pitch | null => {
+  if (!raw) return null;
+  const slides = Array.isArray(raw.slides) ? raw.slides : [];
+  return {
+    ...raw,
+    slides: slides.map((slide: any, index: number) => ({
+      key: slide.key || `slide_${index + 1}`,
+      title: slide.title || `Slide ${index + 1}`,
+      bullets: Array.isArray(slide.bullets) ? slide.bullets : [],
+      status: slide.status || 'complete',
+    })),
+  };
+};
+
 export const PitchDeckPage: React.FC = () => {
   const startupId = useUiStore((state) => state.currentStartupId) || 'hyperscale-ai-001';
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isCritiqueOpen, setIsCritiqueOpen] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const { data: profileEnvelope } = useQuery({
+    queryKey: ['profile', startupId],
+    queryFn: () => apiClient<Profile>(ENDPOINTS.PROFILE_GET(startupId)),
+    staleTime: 30000,
+  });
+  const startupName = profileEnvelope?.data?.identity?.startup_name || 'Current Startup';
 
   // 1. Fetch Pitch Deck
   const { data: envelope, isLoading } = useQuery({
@@ -43,7 +65,7 @@ export const PitchDeckPage: React.FC = () => {
 
   useEffect(() => {
     if (envelope?.data) {
-      setPitch(envelope.data);
+      setPitch(normalizePitch(envelope.data));
     }
   }, [envelope?.data]);
 
@@ -62,7 +84,7 @@ export const PitchDeckPage: React.FC = () => {
     if (!pitch) return;
     setIsExporting(true);
     try {
-      await exportPitchDeckToPptx(pitch, 'HyperScale AI');
+      await exportPitchDeckToPptx(pitch, startupName);
       toast.success('Pitch Deck exported to .pptx successfully!', {
         description: 'Downloaded 12 widescreen presentation slides.',
       });
@@ -87,7 +109,11 @@ export const PitchDeckPage: React.FC = () => {
   const handleAddBulletToCurrentSlide = (claim: Claim) => {
     if (!pitch) return;
     const updated = { ...pitch };
-    updated.slides[activeSlideIndex].bullets.push(claim);
+    updated.slides = [...updated.slides];
+    updated.slides[activeSlideIndex] = {
+      ...updated.slides[activeSlideIndex],
+      bullets: [...(updated.slides[activeSlideIndex].bullets || []), claim],
+    };
     setPitch({ ...updated });
   };
 
@@ -97,6 +123,17 @@ export const PitchDeckPage: React.FC = () => {
         message="Generating 12-Slide Pitch Deck..."
         subtext="Structuring problem, solution, TAM, unit economics, and ask into institutional slides (10-30s)..."
       />
+    );
+  }
+
+  if (pitch.slides.length === 0) {
+    return (
+      <div className="space-y-4">
+        <h1 className="text-2xl font-bold text-slate-900">Pitch Deck</h1>
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
+          No slides were returned yet. Try regenerating after the startup profile has more detail.
+        </div>
+      </div>
     );
   }
 
@@ -170,7 +207,7 @@ export const PitchDeckPage: React.FC = () => {
             slide={currentSlide}
             index={activeSlideIndex}
             total={pitch.slides.length}
-            startupName="HyperScale AI"
+            startupName={startupName}
             onPrev={() => setActiveSlideIndex((prev) => Math.max(0, prev - 1))}
             onNext={() =>
               setActiveSlideIndex((prev) =>
@@ -188,7 +225,7 @@ export const PitchDeckPage: React.FC = () => {
           <div className="flex items-center justify-between text-white border-b border-slate-800 pb-4">
             <div className="flex items-center gap-3">
               <span className="font-extrabold text-lg text-white">
-                HyperScale AI
+                {startupName}
               </span>
               <span className="text-slate-500">•</span>
               <span className="text-sm font-semibold text-brand-400">
@@ -210,7 +247,7 @@ export const PitchDeckPage: React.FC = () => {
               slide={currentSlide}
               index={activeSlideIndex}
               total={pitch.slides.length}
-              startupName="HyperScale AI"
+              startupName={startupName}
               onPrev={() => setActiveSlideIndex((prev) => Math.max(0, prev - 1))}
               onNext={() =>
                 setActiveSlideIndex((prev) =>

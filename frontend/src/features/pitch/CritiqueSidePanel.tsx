@@ -6,6 +6,7 @@ import { PitchCritique } from '../../types/capabilities';
 import { Badge } from '../../components/ui/Badge';
 import { AiLoadingState } from '../../components/ui/Skeleton';
 import { SLIDE_TITLES } from '../../types/contracts';
+import { SlideKey } from '../../types/contracts';
 import { AlertCircle, ShieldAlert, Sparkles, X, CheckSquare } from 'lucide-react';
 
 interface CritiqueSidePanelProps {
@@ -33,7 +34,21 @@ export const CritiqueSidePanel: React.FC<CritiqueSidePanelProps> = ({
 
   if (!isOpen) return null;
 
-  const critique = envelope?.data;
+  const rawCritique: any = envelope?.data;
+  const critique: PitchCritique | null = rawCritique
+    ? {
+        overall_score: rawCritique.overall_score ?? 7,
+        top_priorities: rawCritique.top_priorities || [],
+        investor_objections: rawCritique.investor_objections || [],
+        issues: (rawCritique.issues || []).map((issue: any, index: number) => ({
+          slide_key: (issue.slide_key || issue.topic || 'problem') as SlideKey,
+          severity: issue.severity || 'med',
+          title: issue.title || issue.topic || `Issue ${index + 1}`,
+          explanation: issue.explanation || issue.text || 'This area needs more support.',
+          suggestion: issue.suggestion || issue.recommendation || 'Add more concrete evidence and investor-ready detail.',
+        })),
+      }
+    : null;
 
   const severityVariant = (sev: string): 'danger' | 'warning' | 'default' => {
     if (sev === 'high') return 'danger';
@@ -99,7 +114,7 @@ export const CritiqueSidePanel: React.FC<CritiqueSidePanelProps> = ({
                 Top Priorities Before Pitching
               </h4>
               <ul className="space-y-2">
-                {critique.top_priorities.map((pri, i) => (
+                {critique.top_priorities.map((pri: string, i: number) => (
                   <li
                     key={i}
                     className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-800 flex items-start gap-2 leading-relaxed"
@@ -120,7 +135,7 @@ export const CritiqueSidePanel: React.FC<CritiqueSidePanelProps> = ({
                 Anticipated Investor Objections
               </h4>
               <div className="space-y-2">
-                {critique.investor_objections.map((obj, i) => (
+                {critique.investor_objections.map((obj: string, i: number) => (
                   <div
                     key={i}
                     className="p-3 rounded-lg bg-amber-50/60 border border-amber-200 text-xs font-medium text-amber-900 leading-relaxed italic"
@@ -137,7 +152,7 @@ export const CritiqueSidePanel: React.FC<CritiqueSidePanelProps> = ({
                 Specific Slide Weaknesses ({critique.issues.length})
               </h4>
               <div className="space-y-3">
-                {critique.issues.map((issue, i) => (
+                {critique.issues.map((issue, i: number) => (
                   <div
                     key={i}
                     className="p-4 rounded-xl border border-slate-200 bg-white shadow-xs space-y-2"

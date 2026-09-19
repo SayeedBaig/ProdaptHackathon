@@ -382,8 +382,65 @@ class MockStore {
     }
   }
 
-  public getFeedbackItems(): FeedbackItemDraft[] {
-    return [...this.feedbackItems];
+  public getFeedbackItems(startupId?: string): FeedbackItemDraft[] {
+    if (!startupId || startupId === SAMPLE_STARTUP_ID) {
+      return [...this.feedbackItems];
+    }
+
+    const profile = this.profiles.get(startupId);
+    const idea = profile?.identity.raw_idea.toLowerCase() || '';
+    if (idea.includes('food') || idea.includes('hostel') || idea.includes('student') || idea.includes('meal')) {
+      return [
+        {
+          id: `${startupId}-fb-validation`,
+          topic: 'validation',
+          title: 'Validate student demand with interviews',
+          description: 'Interview hostel students to confirm their meal decision criteria, price sensitivity, and willingness to use a dedicated healthy-food discovery app.',
+          source: 'critique',
+          status: 'open',
+          suggested_patch: {
+            ops: [
+              {
+                op: 'set',
+                path: '/traction/interviews',
+                value: 'Plan: interview 30-50 hostel students about price, nutrition, distance, and meal preferences.',
+                reason: 'Add concrete validation plan',
+              },
+            ],
+          },
+        },
+        {
+          id: `${startupId}-fb-vendors`,
+          topic: 'business_model',
+          title: 'Prove vendor data and monetization workflow',
+          description: 'Clarify how nearby food vendors will share accurate menu, price, and nutrition data, and whether they will pay for listings or promotions.',
+          source: 'investor',
+          status: 'open',
+          suggested_patch: null,
+        },
+        {
+          id: `${startupId}-fb-market`,
+          topic: 'market',
+          title: 'Define the first campus launch wedge',
+          description: 'Pick the first campus or hostel cluster and estimate reachable students, nearby vendors, and weekly meal decisions.',
+          source: 'peer',
+          status: 'open',
+          suggested_patch: null,
+        },
+      ];
+    }
+
+    return [
+      {
+        id: `${startupId}-fb-validation`,
+        topic: 'validation',
+        title: 'Add customer validation evidence',
+        description: 'Capture interviews, pilot results, or willingness-to-pay evidence for the initial customer segment.',
+        source: 'critique',
+        status: 'open',
+        suggested_patch: null,
+      },
+    ];
   }
 
   public updateFeedbackStatus(id: string, status: FeedbackStatus): void {
