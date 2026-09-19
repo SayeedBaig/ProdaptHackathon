@@ -1,9 +1,11 @@
 import uuid
 from datetime import datetime
 from typing import Any
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class AnalysisResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     startup_id: uuid.UUID
     kind: str
@@ -13,6 +15,3 @@ class AnalysisResponse(BaseModel):
     ai_mode: str | None = None
     model: str | None = None
     created_at: datetime
-
-    class Config:
-        from_attributes = True

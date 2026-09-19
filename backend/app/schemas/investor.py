@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 from typing import Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 class StartInvestorSessionRequest(BaseModel):
     pitch_version_id: uuid.UUID | None = None
@@ -12,6 +12,8 @@ class SubmitInvestorAnswerRequest(BaseModel):
     answer: str = Field(min_length=1, max_length=1500)
 
 class InvestorTurnResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID | None = None
     seq: int
     topic: str
@@ -23,10 +25,9 @@ class InvestorTurnResponse(BaseModel):
     created_at: datetime | None = None
     answered_at: datetime | None = None
 
-    class Config:
-        from_attributes = True
-
 class InvestorSessionResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     startup_id: uuid.UUID
     pitch_version_id: uuid.UUID | None = None
@@ -37,9 +38,6 @@ class InvestorSessionResponse(BaseModel):
     completed: bool = False
     started_at: datetime
     completed_at: datetime | None = None
-
-    class Config:
-        from_attributes = True
 
 class InvestorAnswerResponse(BaseModel):
     evaluation: dict[str, Any] | None = None

@@ -29,14 +29,14 @@ class FeedbackService:
 
         ops = []
         if founder_input:
-            # Check for numbers/facts in founder input
+            lower_input = founder_input.lower()
             ops.append({
                 "op": "set",
                 "path": "traction.notes",
                 "value": founder_input,
                 "reason": f"Resolved feedback: {item.title}",
             })
-            if "interview" in founder_input.lower():
+            if any(k in lower_input for k in ["interview", "survey", "student", "user"]):
                 ops.append({
                     "op": "set",
                     "path": "traction.interviews",

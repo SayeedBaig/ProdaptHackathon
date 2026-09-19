@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 from typing import Any, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from app.schemas.profile import Profile
 
 class CreateStartupRequest(BaseModel):
@@ -30,6 +30,8 @@ class ProgressResponse(BaseModel):
     steps: list[ProgressStep]
 
 class StartupResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     user_id: uuid.UUID
     name: str
@@ -42,10 +44,9 @@ class StartupResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
-
 class StartupListItem(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     name: str
     raw_idea: str
@@ -54,9 +55,6 @@ class StartupListItem(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
-
 class StartupListResponse(BaseModel):
     items: list[StartupListItem]
     total: int
@@ -64,6 +62,8 @@ class StartupListResponse(BaseModel):
     page_size: int
 
 class ProfileVersionItem(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     version: int
     change_reason: str
@@ -71,6 +71,3 @@ class ProfileVersionItem(BaseModel):
     created_at: datetime
     data: dict[str, Any]
     patch: list[dict[str, Any]] | None = None
-
-    class Config:
-        from_attributes = True

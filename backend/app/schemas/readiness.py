@@ -1,9 +1,11 @@
 import uuid
 from datetime import datetime
 from typing import Any, Literal
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 class FeedbackItemResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     startup_id: uuid.UUID
     report_id: uuid.UUID | None = None
@@ -15,14 +17,13 @@ class FeedbackItemResponse(BaseModel):
     created_at: datetime
     resolved_at: datetime | None = None
 
-    class Config:
-        from_attributes = True
-
 class ResolveFeedbackRequest(BaseModel):
     action: Literal["accept", "dismiss"]
     founder_input: str | None = None
 
 class ReadinessReportResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: uuid.UUID
     startup_id: uuid.UUID
     session_id: uuid.UUID | None = None
@@ -32,6 +33,3 @@ class ReadinessReportResponse(BaseModel):
     narrative: dict[str, Any] = Field(default_factory=dict)
     feedback_items: list[FeedbackItemResponse] = Field(default_factory=list)
     created_at: datetime
-
-    class Config:
-        from_attributes = True
