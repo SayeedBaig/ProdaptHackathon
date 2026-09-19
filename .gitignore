@@ -6,6 +6,16 @@ PitchPilot_Architecture_and_Team_Guide.md
 venv/
 __pycache__/
 *.pyc
+*.pyo
+
+# Environment and Secrets
+.env
+backend/.env
+
+# Local Databases
+*.db
+*.sqlite
+*.sqlite3
 
 # IDEs and Editors
 .vscode/
