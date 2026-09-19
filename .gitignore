@@ -1,0 +1,17 @@
+# Personal Notes (Do not track)
+M1_Presentation_Notes.md
+PitchPilot_Architecture_and_Team_Guide.md
+
+# Virtual Environment and Python Caches
+venv/
+__pycache__/
+*.pyc
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
