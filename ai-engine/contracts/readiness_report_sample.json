@@ -1,0 +1,45 @@
+{
+  "overall_readiness_score": 86.4,
+  "readiness_badge": "Pitch Ready",
+  "dimension_scores": [
+    {
+      "dimension": "Idea Clarity",
+      "score": 88.0,
+      "summary": "Clear problem statement and solution scope."
+    },
+    {
+      "dimension": "Market Viability",
+      "score": 85.0,
+      "summary": "Large TAM with favorable market growth trends."
+    },
+    {
+      "dimension": "Value Prop & Product",
+      "score": 89.0,
+      "summary": "Strong USPs and clear customer pain relief matrix."
+    },
+    {
+      "dimension": "Pitch Quality",
+      "score": 84.0,
+      "summary": "Well-structured 5-slide deck outline and timing scripts."
+    },
+    {
+      "dimension": "Investor Defense",
+      "score": 86.0,
+      "summary": "Prepared for core financial and technical questions."
+    }
+  ],
+  "key_highlights": [
+    "Targeting a growing $15.4B presentation software market",
+    "High problem relevance for early-stage startup founders",
+    "Clear freemium and enterprise accelerator monetization path"
+  ],
+  "red_flags": [
+    "Need to secure early incubator pilots to prove low CAC assumptions",
+    "Must emphasize proprietary AI evaluation model against simple LLM wrappers"
+  ],
+  "actionable_next_steps": [
+    "Finalize pilot agreements with 2 startup incubators",
+    "Conduct 10 practice Q&A sessions using the AI Investor Simulator",
+    "Add customer testimonial quotes to Slide 3 of the pitch deck"
+  ]
+}

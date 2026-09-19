@@ -1,0 +1,27 @@
+{
+  "overall_score": 81.5,
+  "clarity_score": 85.0,
+  "persuasion_score": 78.0,
+  "issues": [
+    {
+      "topic": "differentiation",
+      "severity": "high",
+      "text": "Existing platforms like Swiggy can easily launch a student filter or discount pass.",
+      "recommendation": "Highlight hosteler batching logistics moat and exclusive vendor partnerships."
+    },
+    {
+      "topic": "validation",
+      "severity": "medium",
+      "text": "Traction slide lacks verified student interview numbers or pilot pre-orders.",
+      "recommendation": "Conduct 30 student interviews and add validation metrics to Slide 5."
+    }
+  ],
+  "investor_objections": [
+    "Why won't Zomato copy your dorm batching delivery concept?",
+    "How will you maintain food quality and hygiene across local mess vendors?"
+  ],
+  "top_priorities": [
+    "Validate student willingness to pay for monthly meal passes",
+    "Define strict hygiene audit guidelines for vendor onboarding"
+  ]
+}

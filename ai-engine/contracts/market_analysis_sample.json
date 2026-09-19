@@ -1,0 +1,38 @@
+{
+  "industry": "AI & Enterprise SaaS",
+  "market_metrics": {
+    "tam": "$15.4 Billion (Global Pitch & Presentation Software Market)",
+    "sam": "$2.2 Billion (Startup Founder Software & Accelerator Tools)",
+    "som": "$95 Million (Early-stage tech founders in NA & EU within 2 years)",
+    "cagr": "19.4% (2024 - 2030)"
+  },
+  "competitor_matrix": [
+    {
+      "name": "Slidebean / Pitch.com",
+      "type": "Direct",
+      "strengths": "Polished visual design templates and presentation collaboration.",
+      "weaknesses": "Limited AI-driven business model critique and no investor Q&A defense simulator.",
+      "differentiation_angle": "Deep focus on investor readiness, business logic critique, and interactive Q&A training."
+    },
+    {
+      "name": "Generic LLMs (ChatGPT / Claude)",
+      "type": "Indirect",
+      "strengths": "High general intelligence and custom prompt flexibility.",
+      "weaknesses": "Unstructured output, lack of standardized pitch deck schemas, no visual slide mapping.",
+      "differentiation_angle": "Structured Pydantic JSON pipelines optimized specifically for startup fundraising workflows."
+    }
+  ],
+  "key_market_trends": [
+    "Explosive growth in AI-native founder tools accelerating company creation",
+    "Shift towards micro-seed funding requiring faster pitch iteration cycles",
+    "Increased investor scrutiny on unit economics and defensibility over hype"
+  ],
+  "barriers_to_entry": [
+    "Network effects from incubator & accelerator partnerships",
+    "Proprietary dataset of successful pitch decks for benchmarking algorithms"
+  ],
+  "growth_drivers": [
+    "Rising number of global startup hackathons and incubator programs",
+    "Demand for automated business intelligence among solo founders"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "research_status": "ok",
+  "segments": [
+    {
+      "name": "Hostel-dwelling university students",
+      "description": "Students living in on-campus dormitories needing 2-3 meals daily.",
+      "provenance": "founder_assumption"
+    },
+    {
+      "name": "Off-campus student apartments",
+      "description": "Shared student apartments seeking daily healthy tiffin subscriptions.",
+      "provenance": "ai_analysis"
+    }
+  ],
+  "market_size": {
+    "tam": "$4.8 Billion (India College Food & Tiffin Service Market)",
+    "sam": "$1.2 Billion (University Cities & Tech Hub Hostels)",
+    "som": "$45 Million (50 Target University Campuses over 3 Years)",
+    "status": "ok",
+    "calculation": "150,000 students × $300 annual meal spend = $45M SOM"
+  },
+  "opportunities": [
+    {
+      "text": "Growing focus on health and wellness among Gen-Z university students.",
+      "provenance": "source_backed",
+      "evidence_ids": ["e1"],
+      "supporting_quote": "Student preference for healthy food options grew 34% post-2023."
+    }
+  ],
+  "threats": [
+    {
+      "text": "Large delivery platforms launching student discount passes.",
+      "provenance": "ai_analysis"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e1",
+      "title": "University Food Consumption Study 2024",
+      "url": "https://example.com/reports/student-food-2024",
+      "snippet": "Student preference for healthy food options grew 34% post-2023 across major university hubs.",
+      "provider": "tavily"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "title": "PitchCoach AI",
+  "problem_statement": "Entrepreneurs and startup teams in AI & Enterprise SaaS face severe friction converting unrefined business concepts into compelling, investor-grade pitch collateral.",
+  "proposed_solution": "PitchCoach AI is an AI-native pitch coaching system providing automated idea refinement, real-time slide deck structuring, competitive benchmarking, and interactive investor Q&A simulation.",
+  "target_audience": "Early-stage founders, hackathon participants, incubator teams, and startup accelerators in Global.",
+  "novelty_score": 88.5,
+  "clarity_score": 85.0,
+  "key_strengths": [
+    "High problem relevance for early stage founders seeking venture capital",
+    "Automated structured outputs eliminates manual formatting and pitch deck writer costs",
+    "Integrated investor question simulator provides pitch defense preparation"
+  ],
+  "potential_weaknesses": [
+    "Needs strong defensibility against generic LLM wrappers",
+    "Requires proprietary benchmark data for industry-specific market sizing validation"
+  ],
+  "risk_factors": [
+    {
+      "category": "Execution",
+      "risk": "Founders relying solely on AI outputs without customizing real customer traction metrics.",
+      "mitigation": "Incorporate mandatory traction prompts and guidance notes during pitch generation."
+    },
+    {
+      "category": "Market",
+      "risk": "Competitive pressure from established slide design tools adding basic AI plugins.",
+      "mitigation": "Position deeply as an AI Pitch Coach focused on investor readiness and defense rather than just aesthetics."
+    }
+  ],
+  "summary": "Strong startup concept with high market potential in AI & Enterprise SaaS. Focus on building proprietary pitch scoring and real-time VC Q&A practice to maximize founder value."
+}

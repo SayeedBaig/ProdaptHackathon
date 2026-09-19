@@ -1,0 +1,63 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "title": "PitchCoach AI: AI Startup Pitch Coach",
+      "key_bullets": [
+        "Empowering founders to turn ideas into venture-funded startups",
+        "AI-driven pitch deck generation, market benchmarking, and VC Q&A practice"
+      ],
+      "visual_suggestion": "Sleek dark mode title banner with glowing logo mark and key value tagline.",
+      "speaker_notes": "Hi everyone, I'm presenting PitchCoach AI. We are solving the biggest bottleneck for early-stage entrepreneurs: turning raw business ideas into winning investor pitches."
+    },
+    {
+      "slide_number": 2,
+      "title": "The Problem: Pitch Prep is Slow & Unpredictable",
+      "key_bullets": [
+        "90% of early-stage pitches fail due to poor structure and weak market defense",
+        "Founders spend 40+ hours crafting decks or pay $3k+ to consultants",
+        "First-time founders are blind-sided by tough VC questions during meetings"
+      ],
+      "visual_suggestion": "Split-screen graphic showing stressed founder vs delayed timeline.",
+      "speaker_notes": "Most founders waste weeks guessing what investors want to hear, only to fail in pitch meetings when faced with unexpected questions."
+    },
+    {
+      "slide_number": 3,
+      "title": "The Solution: PitchCoach AI",
+      "key_bullets": [
+        "Automated Idea Analysis & Value Proposition refinement",
+        "Instant slide deck content generation with timing & speaker notes",
+        "Interactive VC Grill Simulator with real-time answer evaluation"
+      ],
+      "visual_suggestion": "3-step workflow diagram: Input Idea -> AI Refinement -> Investor-Ready Pitch.",
+      "speaker_notes": "With PitchCoach AI, founders input their raw concept and receive a complete, investor-vetted pitch package in minutes."
+    },
+    {
+      "slide_number": 4,
+      "title": "Market Opportunity & TAM",
+      "key_bullets": [
+        "TAM: $15.4B Global Pitch & Presentation Software market",
+        "SAM: $2.2B Early-Stage Founder Tools market",
+        "SOM: $95M Target market across tech incubators & solo founders"
+      ],
+      "visual_suggestion": "Concentric circle diagram for TAM/SAM/SOM breakdown.",
+      "speaker_notes": "We are targeting a massive $15B total addressable market, starting with early-stage founders and incubator cohorts."
+    },
+    {
+      "slide_number": 5,
+      "title": "Business Model & Traction Roadmap",
+      "key_bullets": [
+        "Freemium SaaS: $29/mo Founder tier, $199 Pitch Clinic tier",
+        "B2B Enterprise: Accelerator & Incubator bulk licensing",
+        "Roadmap: Integration with AI audio coaching and deck export"
+      ],
+      "visual_suggestion": "Tiered pricing grid and 4-quarter roadmap timeline.",
+      "speaker_notes": "Our business model leverages recurring SaaS subscriptions and enterprise licensing for accelerators."
+    }
+  ],
+  "scripts": {
+    "elevator_pitch_30s": "Hi, I'm building PitchCoach AI. Entrepreneurs struggle to turn raw ideas into convincing business pitches, wasting weeks and losing investor interest. PitchCoach AI is an AI pitch coach that refines value propositions, generates structured slide decks, and trains founders through real-time VC Q&A simulations. We're opening up a $15B market opportunity to make every founder investor-ready.",
+    "overview_pitch_2min": "Good day. Every year, millions of entrepreneurs launch startups, but over 90% struggle to communicate their vision effectively to investors. Creating a great pitch deck and preparing for tough investor questions takes weeks of expensive trial and error. That's why we created PitchCoach AI. Our platform uses structured AI models to analyze startup concepts, generate slide-by-slide deck content with speaker notes, calculate TAM/SAM/SOM market metrics, and simulate real-time investor grillings with instant feedback. We operate a freemium SaaS model targeting the $2.2B founder software market, partnering directly with startup incubators. We are seeking early partners and seed funding to scale our AI pitch engine globally.",
+    "full_pitch_5min": "Welcome investors. Today I'm thrilled to introduce PitchCoach AI. Let's look at Slide 1: PitchCoach AI is an AI Startup Pitch Coach designed to turn raw concepts into venture-backed companies. Moving to Slide 2: The core problem is that first-time founders lack fundraising experience. They spend 40+ hours writing decks or thousands of dollars on consultants, yet still get rejected because they haven't validated their market or prepared for hard VC questions. On Slide 3: Our solution automates the entire pitch creation workflow\u2014from idea analysis and value prop mapping to interactive Q&A defense. Slide 4 shows our market validation: a $15.4B presentation software sector with an urgent need for domain-specific AI logic. Finally, Slide 5 highlights our monetization strategy: SaaS subscriptions starting at $29/mo and enterprise accelerator packages. Thank you, and we'd love to take your questions."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "f1",
+      "topic": "validation",
+      "title": "Validate student willingness to pay",
+      "recommendation": "Interview 20-30 hostel students regarding daily meal subscription pricing and batch delivery preferences.",
+      "suggested_patch": {
+        "ops": [
+          {
+            "op": "set",
+            "path": "traction.interviews",
+            "value": 30,
+            "source": "founder",
+            "reason": "Founder recorded 30 student interview validations."
+          }
+        ]
+      },
+      "status": "open"
+    }
+  ]
+}
